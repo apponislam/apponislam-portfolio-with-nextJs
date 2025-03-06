@@ -1,12 +1,13 @@
 import { BiLaugh, BiSolidUser } from "react-icons/bi";
 import { BsInfoCircle, BsQuestionCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
-import { FaDownload, FaHome, FaTwitter } from "react-icons/fa";
+import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
 import { AlertTriangle, ArrowRight, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone } from "lucide-react";
 import { SiAngular, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
 import { IoIosGitBranch } from "react-icons/io";
 import { TbBrandFiverr } from "react-icons/tb";
+import { FcGoogle } from "react-icons/fc";
 
 export const Icons = {
     contact: Phone,
@@ -69,6 +70,9 @@ export const Icons = {
     fiverr: TbBrandFiverr,
     home: FaHome,
     download: FaDownload,
+    amazonaws: FaAws,
+    google: FcGoogle,
+    facebook: FaFacebook,
     gitHub: ({ ...props }: LucideProps) => (
         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" {...props}>
             <path

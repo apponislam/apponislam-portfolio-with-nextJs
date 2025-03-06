@@ -126,6 +126,7 @@
 .downarrow {
     -webkit-animation: mover 1s infinite alternate;
     animation: mover 1s infinite alternate;
+    cursor: pointer;
 }
 @-webkit-keyframes mover {
     0% {
@@ -142,4 +143,16 @@
     100% {
         transform: translateY(-10px);
     }
+}
+
+@font-face {
+    font-family: "CalSans-SemiBold";
+    src: url("../assets/fonts/CalSans-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    /* font-style: normal;
+  font-display: swap; */
+}
+
+.font-heading {
+    font-family: "CalSans-SemiBold";
 }
