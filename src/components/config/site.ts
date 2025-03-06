@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const siteConfig: any = {
     name: "Appon Islam",
     description: "An open source application built using the new router, server components and everything new in Next.js 13.",
