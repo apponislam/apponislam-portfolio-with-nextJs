@@ -8,6 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Icons } from "../icons";
 import { useModalStore } from "../hooks/use-modal-store";
+import { signIn } from "next-auth/react";
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email."),
@@ -86,11 +87,11 @@ const LoginForm = () => {
                 <Button type="submit">Log In</Button>
                 <div className="my-4 mt-0 flex items-center justify-center gap-2">
                     <div className="flex items-center gap-4">
-                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center">
+                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("google", { callbackUrl: "http://localhost:3000" })}>
                             <Icons.google className="w-8 h-8" />
                         </div>
-                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center">
-                            <Icons.facebook className="w-8 h-8 text-[#4267B2]" />
+                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("github")}>
+                            <Icons.gitHub className="w-8 h-8" />
                         </div>
                     </div>
                 </div>
