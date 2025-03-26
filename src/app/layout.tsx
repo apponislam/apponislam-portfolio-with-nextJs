@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/components/config/site";
 import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/utils/modal-provider";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
             <body suppressHydrationWarning={true} data-new-gr-c-s-check-loaded="14.1224.0" cz-shortcut-listen="true" data-gr-ext-installed="" className={cn("font-sans antialiased", fontSans.variable, fontHeading.variable)}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     {children}
+                    <ModalProvider />
                 </ThemeProvider>
             </body>
         </html>

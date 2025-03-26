@@ -8,7 +8,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Icons } from "../icons";
 import { useModalStore } from "../hooks/use-modal-store";
-import { signIn } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     email: z.string().email("Please enter a valid email."),
@@ -17,8 +18,7 @@ const formSchema = z.object({
 
 const LoginForm = () => {
     const storeModal = useModalStore();
-
-    // const [open, setOpen] = useState(false);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -28,29 +28,82 @@ const LoginForm = () => {
         },
     });
 
+    // async function onSubmit(values: z.infer<typeof formSchema>) {
+    //     try {
+    //         const response = await fetch("/api/login", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(values),
+    //         });
+
+    //         console.log(response);
+
+    //         form.reset();
+
+    //         if (response.status === 200) {
+    //             storeModal.onOpen({
+    //                 title: "Thankyou!",
+    //                 description: "Your are logged in",
+    //                 icon: Icons.successAnimated,
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.log("Err!", err);
+    //     }
+    // }
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await fetch("/api/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
+            const result = await signIn("credentials", {
+                email: values.email,
+                password: values.password,
+                redirect: false,
             });
-
-            console.log(response);
 
             form.reset();
 
-            if (response.status === 200) {
-                storeModal.onOpen({
-                    title: "Thankyou!",
-                    description: "Your are logged in",
-                    icon: Icons.successAnimated,
-                });
+            // Explicit error handling for NextAuth responses
+            if (result?.error) {
+                let errorMessage = "Login failed";
+
+                // Specific error messages for common cases
+                if (result.error === "CredentialsSignin") {
+                    errorMessage = "Invalid email or password";
+                } else if (result.error.includes("callback")) {
+                    errorMessage = "Authentication service error";
+                }
+
+                throw new Error(errorMessage);
             }
-        } catch (err) {
-            console.log("Err!", err);
+
+            // Success case
+            storeModal.onOpen({
+                title: "Welcome back!",
+                description: "You've successfully signed in",
+                icon: Icons.successAnimated,
+            });
+            // 2. Force session update
+            // const res = await fetch("/api/auth/session");
+            // const session = await res.json();
+            // console.log(session);
+            router.refresh();
+
+            // 3. Update client-side state (if using useSession)
+            // if (typeof window !== "undefined" && window.updateSession) {
+            //     window.updateSession(session);
+            // }
+
+            // window.location.href = "/";
+            setTimeout(() => router.push("/"), 1500);
+        } catch (err: any) {
+            storeModal.onOpen({
+                title: "Oops!",
+                description: err.message || "An error occurred during login",
+                icon: Icons.failedAnimated,
+            });
+            // console.error("Login error:", err);
         }
     }
 
@@ -87,10 +140,10 @@ const LoginForm = () => {
                 <Button type="submit">Log In</Button>
                 <div className="my-4 mt-0 flex items-center justify-center gap-2">
                     <div className="flex items-center gap-4">
-                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("google", { callbackUrl: "http://localhost:3000" })}>
+                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("google", { callbackUrl: "/" })}>
                             <Icons.google className="w-8 h-8" />
                         </div>
-                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("github")}>
+                        <div className="border border-primary dark:border-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer" onClick={() => signIn("github", { callbackUrl: "/" })}>
                             <Icons.gitHub className="w-8 h-8" />
                         </div>
                     </div>
