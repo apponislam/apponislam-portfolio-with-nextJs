@@ -89,4 +89,12 @@ export const Icons = {
             </svg>
         </div>
     ),
+    failedAnimated: ({ ...props }: LucideProps) => (
+        <div className="svg-container">
+            <svg className="ft-red-cross" xmlns="http://www.w3.org/2000/svg" height="5rem" width="5rem" viewBox="0 0 48 48" aria-hidden="true" {...props}>
+                <circle className="circle" fill="#f44336" cx="24" cy="24" r="22" />
+                <path className="cross" fill="none" stroke="#FFF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" d="M16 16L32 32M32 16L16 32" />
+            </svg>
+        </div>
+    ),
 };
