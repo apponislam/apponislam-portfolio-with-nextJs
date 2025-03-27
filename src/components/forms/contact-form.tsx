@@ -38,7 +38,7 @@ const ContactForm = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/messages`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,14 +47,22 @@ const ContactForm = () => {
             });
 
             console.log(response);
+            const responseData = await response.json();
+            console.log(responseData);
 
-            form.reset();
+            if (response.ok) {
+                form.reset();
 
-            if (response.status === 200) {
                 storeModal.onOpen({
                     title: "Thankyou!",
                     description: "Your message has been received! I appreciate your contact and will get back to you shortly.",
                     icon: Icons.successAnimated,
+                });
+            } else if (!response.ok) {
+                storeModal.onOpen({
+                    title: "Oops!",
+                    description: responseData.message || "Your message send failed.",
+                    icon: Icons.failedAnimated,
                 });
             }
         } catch (err) {

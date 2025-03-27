@@ -28,32 +28,6 @@ const LoginForm = () => {
         },
     });
 
-    // async function onSubmit(values: z.infer<typeof formSchema>) {
-    //     try {
-    //         const response = await fetch("/api/login", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(values),
-    //         });
-
-    //         console.log(response);
-
-    //         form.reset();
-
-    //         if (response.status === 200) {
-    //             storeModal.onOpen({
-    //                 title: "Thankyou!",
-    //                 description: "Your are logged in",
-    //                 icon: Icons.successAnimated,
-    //             });
-    //         }
-    //     } catch (err) {
-    //         console.log("Err!", err);
-    //     }
-    // }
-
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const result = await signIn("credentials", {
