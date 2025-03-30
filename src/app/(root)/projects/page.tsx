@@ -18,6 +18,7 @@ function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivE
 
 const renderContent = (tabVal: string) => {
     let expArr = Projects;
+    console.log(expArr);
     if (tabVal === "personal") {
         expArr = expArr.filter((val) => val.type === "Personal Project");
     } else if (tabVal === "professional") {
@@ -27,7 +28,7 @@ const renderContent = (tabVal: string) => {
     return (
         <div className="container items-start justify-center gap-6 rounded-lg pt-8 p-0 md:p-8 sm:grid md:grid-cols-2 lg:grid-cols-3">
             {expArr.map((exp) => (
-                <ProjectContainer key={exp.id}>
+                <ProjectContainer key={exp._id}>
                     <ProjectCard project={exp} />
                 </ProjectContainer>
             ))}
