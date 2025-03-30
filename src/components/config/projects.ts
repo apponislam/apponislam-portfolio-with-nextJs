@@ -12,7 +12,8 @@ interface DescriptionDetailsInterface {
 }
 
 export interface ProjectsInterface {
-    id: string;
+    _id: string;
+    userId?: string;
     type: ValidExpType;
     companyName: string;
     category: ValidCategory[];
@@ -29,7 +30,7 @@ export interface ProjectsInterface {
 
 export const Projects: ProjectsInterface[] = [
     {
-        id: "built-design",
+        _id: "built-design",
         type: "Professional",
         companyName: "Builtdesign",
         category: ["Full Stack", "Web Dev"],
@@ -52,7 +53,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "dev-hub",
+        _id: "dev-hub",
         type: "Professional",
         companyName: "DevHub",
         category: ["Frontend", "Web Dev"],
@@ -75,7 +76,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "shop-mart",
+        _id: "shop-mart",
         type: "Professional",
         companyName: "ShopMart",
         category: ["Full Stack", "Web Dev"],
@@ -98,7 +99,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "edu-learn",
+        _id: "edu-learn",
         type: "Professional",
         companyName: "EduLearn",
         category: ["Full Stack", "Web Dev"],
@@ -121,7 +122,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "travel-go",
+        _id: "travel-go",
         type: "Professional",
         companyName: "TravelGo",
         category: ["Full Stack", "Web Dev"],
@@ -144,7 +145,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "fit-life",
+        _id: "fit-life",
         type: "Professional",
         companyName: "FitLife",
         category: ["Full Stack", "Web Dev"],
@@ -167,7 +168,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "blogify",
+        _id: "blogify",
         type: "Personal Project",
         companyName: "Blogify",
         category: ["Full Stack", "Web Dev"],
@@ -190,7 +191,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "event-expo",
+        _id: "event-expo",
         type: "Professional",
         companyName: "EventExpo",
         category: ["Full Stack", "Web Dev"],
@@ -213,7 +214,7 @@ export const Projects: ProjectsInterface[] = [
         },
     },
     {
-        id: "foodie-hub",
+        _id: "foodie-hub",
         type: "Personal Project",
         companyName: "FoodieHub",
         category: ["Full Stack", "Web Dev"],

@@ -82,7 +82,7 @@ export default function Home() {
                     </div>
                     <div className="mx-auto grid justify-center gap-4  md:w-full lg:grid-cols-3 2xl:w-[1200px]">
                         {featuredProjects.map((exp) => (
-                            <ProjectCard key={exp.id} project={exp} />
+                            <ProjectCard key={exp._id} project={exp} />
                         ))}
                     </div>
                     <Link href="/projects" className="flex justify-center">

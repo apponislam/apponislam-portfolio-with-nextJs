@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <div className="flex gap-2 flex-wrap">
                     <ChipContainer textArr={project.category} />
                 </div>
-                <Link href={`/projects/${project.id}`}>
+                <Link href={`/projects/${project._id}`}>
                     <Button variant={"default"} className="mt-2">
                         Read more
                         <Icons.chevronRight className="w-4 ml-1" />

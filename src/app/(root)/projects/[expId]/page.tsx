@@ -20,7 +20,7 @@ interface ProjectsPageProps {
 const githubUsername = "apponislam";
 
 export default function ProjectsPage({ params }: ProjectsPageProps) {
-    const exp = Projects.find((val) => val.id === params.expId);
+    const exp = Projects.find((val) => val._id === params.expId);
     if (!exp) {
         redirect("/projects");
     }
