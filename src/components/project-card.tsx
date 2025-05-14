@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import ChipContainer from "./chip-container";
 import { ProjectsInterface } from "./config/projects";
+import { Badge } from "./ui/badge";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
@@ -22,6 +23,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 <p className="line-clamp-3 font-normal text-gray-700 dark:text-gray-400">{project.shortDescription}</p>
                 <div className="flex gap-2 flex-wrap">
                     <ChipContainer textArr={project.category} />
+                </div>
+                <div className="flex flex-wrap gap-1 mt-2">
+                    {project.techStack.slice(0, 4).map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-xs">
+                            {tech}
+                        </Badge>
+                    ))}
                 </div>
                 <Link href={`/projects/${project._id}`}>
                     <Button variant={"default"} className="mt-2">

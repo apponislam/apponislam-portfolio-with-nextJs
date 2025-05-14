@@ -1,13 +1,12 @@
-import ProjectForm from "@/components/forms/project-form";
+import ProjectUpdateForm from "@/components/forms/update-project-form";
 import { Button } from "@/components/ui/button";
 import { authOptions } from "@/utils/authOptions";
 import { Undo2 } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-const page = async () => {
+const Page = async ({ params }: { params: { expId: string } }) => {
     const session = await getServerSession(authOptions);
-
     const id = session?.user._id;
 
     return (
@@ -21,10 +20,10 @@ const page = async () => {
                 </Link>
             </div>
             <div className="xl:w-1/2 block mx-auto my-4">
-                <ProjectForm id={id ?? ""}></ProjectForm>
+                <ProjectUpdateForm id={id ?? ""} projectId={params.expId} />
             </div>
         </div>
     );
 };
 
-export default page;
+export default Page;

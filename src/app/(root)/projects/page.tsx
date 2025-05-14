@@ -3,9 +3,10 @@ import PageHeader from "@/components/page-header";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import React from "react";
-import { Projects } from "@/components/config/projects";
+// import { Projects } from "@/components/config/projects";
 import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProjectsInterface } from "@/components/config/projects";
 
 export const metadata: Metadata = {
     title: "Projects",
@@ -16,9 +17,22 @@ function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivE
     return <div className={cn("flex items-center justify-center mb-4 md:mb-0 [&>div]:w-full ", className)} {...props} />;
 }
 
-const renderContent = (tabVal: string) => {
-    let expArr = Projects;
-    console.log(expArr);
+async function getProjects() {
+    const res = await fetch("http://localhost:5000/api/v1/project", {
+        next: { revalidate: 2 },
+    });
+    if (!res.ok) throw new Error("Failed to fetch projects");
+    const response = await res.json();
+    return response.data; // Extract the array from the response
+}
+
+const renderContent = async (tabVal: string) => {
+    // let expArr = Projects;
+    // console.log(expArr);
+
+    let expArr: ProjectsInterface[] = await getProjects();
+    // console.log(expArr);
+
     if (tabVal === "personal") {
         expArr = expArr.filter((val) => val.type === "Personal Project");
     } else if (tabVal === "professional") {

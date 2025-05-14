@@ -6,7 +6,7 @@ import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, formatDateFromObj } from "@/lib/utils";
 // import { Projects } from "@/components/config/projects";
-import apponislam from "../../../../../public/apponislam.png";
+import apponislam from "../../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
@@ -44,7 +44,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
         exp = await getProjectById(expId);
     } catch (err) {
         console.log(err);
-        redirect("/projects");
+        redirect("/dashboard/portfolio");
     }
 
     // if (!exp) {
@@ -59,7 +59,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">
-            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "absolute left-[-200px] top-14 hidden xl:inline-flex")}>
+            <Link href="/dashboard/portfolio" className={cn(buttonVariants({ variant: "ghost" }), "absolute left-[-200px] top-14 hidden xl:inline-flex")}>
                 <Icons.chevronLeft className="mr-2 h-4 w-4" />
                 All Projects
             </Link>
@@ -131,7 +131,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 
             <hr className="mt-12" />
             <div className="flex justify-center py-6 lg:py-10">
-                <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }))}>
+                <Link href="/dashboard/portfolio" className={cn(buttonVariants({ variant: "ghost" }))}>
                     <Icons.chevronLeft className="mr-2 h-4 w-4" />
                     All Projects
                 </Link>
