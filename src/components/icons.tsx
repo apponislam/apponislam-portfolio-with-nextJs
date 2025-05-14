@@ -8,6 +8,8 @@ import { SiAngular, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavasc
 import { IoIosGitBranch } from "react-icons/io";
 import { TbBrandFiverr } from "react-icons/tb";
 import { FcGoogle } from "react-icons/fc";
+import { CiEdit } from "react-icons/ci";
+import { CgMoreVerticalAlt } from "react-icons/cg";
 
 export const Icons = {
     contact: Phone,
@@ -73,6 +75,8 @@ export const Icons = {
     amazonaws: FaAws,
     google: FcGoogle,
     facebook: FaFacebook,
+    edit: CiEdit,
+    moreVertical: CgMoreVerticalAlt,
     gitHub: ({ ...props }: LucideProps) => (
         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" {...props}>
             <path
