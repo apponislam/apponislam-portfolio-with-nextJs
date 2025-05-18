@@ -9,16 +9,16 @@ export async function getMainNav() {
         { title: "Skills", href: "/skills" },
         { title: "Projects", href: "/projects" },
         { title: "Contact", href: "/contact" },
-        { title: "Blog", href: "/blog" },
-        { title: "Login", href: "/login" },
-        { title: "Register", href: "/register" },
+        { title: "Blogs", href: "/blogs" },
+        // { title: "Login", href: "/login" },
+        // { title: "Register", href: "/register" },
     ];
 
     const mainNavIfLoggedIn = [
         { title: "Skills", href: "/skills" },
         { title: "Projects", href: "/projects" },
         { title: "Contact", href: "/contact" },
-        { title: "Blog", href: "/blog" },
+        { title: "Blogs", href: "/blogs" },
     ];
 
     const mainNav = session ? mainNavIfLoggedIn : mainNavIfLoggedOut;

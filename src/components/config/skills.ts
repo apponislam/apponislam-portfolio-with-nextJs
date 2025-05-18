@@ -46,6 +46,12 @@ export const skillsUnsorted: skillsInterface[] = [
         icon: Icons.mongodb,
     },
     {
+        name: "PostgreSQL",
+        description: "Reliable and powerful open-source relational database system with advanced SQL capabilities.",
+        rating: 5,
+        icon: Icons.postgres,
+    },
+    {
         name: "Typescript",
         description: "Enhance JavaScript with static types, making code more understandable and reliable.",
         rating: 5,

@@ -22,7 +22,7 @@ const items = [
     },
     {
         title: "Manage Blogs",
-        url: "/dashboard/blog",
+        url: "/dashboard/blogs",
         icon: Rss,
     },
     {
