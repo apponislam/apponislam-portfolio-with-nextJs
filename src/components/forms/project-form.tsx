@@ -42,7 +42,9 @@ const formSchema = z.object({
     startDate: z.date({
         required_error: "A start date is required.",
     }),
-    endDate: z.date().optional(),
+    endDate: z.date({
+        required_error: "A end date is required.",
+    }),
     companyLogoImg: z.string().url({
         message: "Please upload a valid company logo.",
     }),
@@ -490,7 +492,7 @@ const ProjectForm = ({ id }: { id: string }) => {
                         name="endDate"
                         render={({ field }) => (
                             <FormItem className="flex flex-col">
-                                <FormLabel>End Date (optional)</FormLabel>
+                                <FormLabel>End Date</FormLabel>
                                 <Popover>
                                     <PopoverTrigger asChild>
                                         <FormControl>

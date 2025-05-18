@@ -18,6 +18,8 @@ import { Badge } from "@/components/ui/badge";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { updateProject } from "../actions/portfolio-actions";
+import { useRouter } from "next/navigation";
 
 interface CloudinaryUploadResponse {
     secure_url: string;
@@ -274,6 +276,49 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
         }
     };
 
+    // async function onSubmit(values: z.infer<typeof formSchema>) {
+    //     try {
+    //         const payload = {
+    //             userId: id,
+    //             ...values,
+    //             startDate: values.startDate.toISOString(),
+    //             endDate: values.endDate?.toISOString(),
+    //         };
+
+    //         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${projectId}`, {
+    //             method: "PATCH",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(payload),
+    //         });
+
+    //         const responseData = await response.json();
+
+    //         if (response.ok) {
+    //             storeModal.onOpen({
+    //                 title: "Success!",
+    //                 description: "Project has been updated successfully!",
+    //                 icon: Icons.successAnimated,
+    //             });
+    //         } else {
+    //             storeModal.onOpen({
+    //                 title: "Error",
+    //                 description: responseData.message || "Failed to update project.",
+    //                 icon: Icons.failedAnimated,
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.error("Error submitting form:", err);
+    //         storeModal.onOpen({
+    //             title: "Error",
+    //             description: "An unexpected error occurred.",
+    //             icon: Icons.failedAnimated,
+    //         });
+    //     }
+    // }
+
+    const router = useRouter();
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const payload = {
@@ -283,26 +328,20 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
                 endDate: values.endDate?.toISOString(),
             };
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${projectId}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
-            });
+            const result = await updateProject(projectId, payload);
 
-            const responseData = await response.json();
-
-            if (response.ok) {
+            if (result.success) {
+                router.refresh();
                 storeModal.onOpen({
                     title: "Success!",
                     description: "Project has been updated successfully!",
                     icon: Icons.successAnimated,
                 });
+                router.push("/dashboard/portfolio");
             } else {
                 storeModal.onOpen({
                     title: "Error",
-                    description: responseData.message || "Failed to update project.",
+                    description: result.error,
                     icon: Icons.failedAnimated,
                 });
             }
