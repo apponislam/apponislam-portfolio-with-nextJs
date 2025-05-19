@@ -1,13 +1,16 @@
-// app/profile/page.tsx
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
-import { Separator } from "@radix-ui/react-separator";
-import { Icons } from "@/components/icons";
-import { ReactElement } from "react";
 import { CalendarIcon } from "lucide-react";
+import { Icons } from "@/components/icons";
+
+const ProviderIcons = {
+    Email: () => <Icons.gmail className="h-4 w-4" />,
+    Google: () => <Icons.google className="h-4 w-4" />,
+    Github: () => <Icons.gitHub className="h-4 w-4" />,
+};
 
 export default async function ProfilePage() {
     const session = await getServerSession(authOptions);
@@ -16,29 +19,16 @@ export default async function ProfilePage() {
         return <div className="flex justify-center py-8">Please sign in to view your profile</div>;
     }
 
-    // Fetch user data from API route
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/${session.user._id}`, {
         cache: "no-store",
     });
-
-    console.log(res);
 
     if (!res.ok) {
         return <div className="flex justify-center py-8">Error loading profile</div>;
     }
 
     const { user } = await res.json();
-
-    type Provider = "Email" | "Google" | "Github";
-
-    const providerIcons: Record<Provider, ReactElement> = {
-        Email: <Icons.gmail className="h-4 w-4" />,
-        Google: <Icons.google className="h-4 w-4" />,
-        Github: <Icons.gitHub className="h-4 w-4" />,
-    };
-
-    const provider = (user.provider || "Email") as Provider;
-    const providerIcon = providerIcons[provider];
+    const ProviderIcon = ProviderIcons[user.provider as keyof typeof ProviderIcons] || ProviderIcons.Email;
 
     return (
         <div className="container py-8 mx-auto">
@@ -48,13 +38,13 @@ export default async function ProfilePage() {
                     <AvatarFallback>
                         {user.name
                             ?.split(" ")
-                            .map((n: any) => n[0])
+                            .map((n: string) => n[0])
                             .join("")}
                     </AvatarFallback>
                 </Avatar>
                 <h1 className="text-3xl font-bold">{user.name}</h1>
                 <div className="flex items-center gap-2 text-muted-foreground mt-2">
-                    {providerIcon}
+                    <ProviderIcon />
                     <span>Signed in with {user.provider}</span>
                 </div>
             </div>
@@ -69,8 +59,7 @@ export default async function ProfilePage() {
                             <p className="text-sm text-muted-foreground">Email</p>
                             <p>{user.email}</p>
                         </div>
-                        <Separator />
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 mt-4">
                             <CalendarIcon className="h-4 w-4 text-muted-foreground" />
                             <span className="text-sm text-muted-foreground">Member since {format(new Date(user.createdAt), "MMMM yyyy")}</span>
                         </div>
