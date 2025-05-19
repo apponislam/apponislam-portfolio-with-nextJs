@@ -1,4 +1,4 @@
-import { GalleryHorizontalEnd, Home, Inbox, Rss, User } from "lucide-react";
+import { GalleryHorizontalEnd, Home, Inbox, Package, Rss, User } from "lucide-react";
 
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import Link from "next/link";
@@ -24,6 +24,11 @@ const items = [
         title: "Manage Blogs",
         url: "/dashboard/blogs",
         icon: Rss,
+    },
+    {
+        title: "Manage Skills",
+        url: "/dashboard/skills",
+        icon: Package,
     },
     {
         title: "Profile",
