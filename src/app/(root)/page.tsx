@@ -5,11 +5,12 @@ import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import ScrollButton from "@/components/ScrollButton";
-import SkillsCard from "@/components/skills-card";
+// import SkillsCard from "@/components/skills-card";
 import { pagesConfig } from "@/components/config/pages";
-import { featuredSkills } from "@/components/config/skills";
+// import { featuredSkills } from "@/components/config/skills";
 import ProjectCard from "@/components/project-card";
 import { featuredProjects } from "@/components/config/projects";
+import HomeSkills from "@/components/Home-skills";
 
 export default function Home() {
     return (
@@ -68,7 +69,8 @@ export default function Home() {
                         <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">{pagesConfig.skills.title}</h2>
                         <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">{pagesConfig.skills.description}</p>
                     </div>
-                    <SkillsCard skills={featuredSkills} />
+                    {/* <SkillsCard skills={featuredSkills} /> */}
+                    <HomeSkills></HomeSkills>
                     <Link href="/skills" className="flex justify-center">
                         <Button variant={"outline"} className="rounded-xl">
                             <Icons.chevronDown className="mr-2 h-4 w-4" /> View All

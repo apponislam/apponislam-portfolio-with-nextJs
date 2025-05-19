@@ -13,8 +13,11 @@ async function getBlogPost(id: string) {
     return res.json();
 }
 
-export default async function BlogPostPage({ params }: { params: { blogId: string } }) {
-    const { data: blog } = await getBlogPost(params.blogId);
+type Params = Promise<{ blogId: string }>;
+
+export default async function BlogPostPage({ params }: { params: Params }) {
+    const { blogId } = await params;
+    const { data: blog } = await getBlogPost(blogId);
 
     if (!blog) return notFound();
 

@@ -17,7 +17,7 @@ export default async function ProfilePage() {
     }
 
     // Fetch user data from API route
-    const res = await fetch(`http://localhost:5000/api/v1/users/${session.user._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/${session.user._id}`, {
         cache: "no-store",
     });
 

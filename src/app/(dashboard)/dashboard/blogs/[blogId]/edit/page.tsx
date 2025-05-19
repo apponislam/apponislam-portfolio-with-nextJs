@@ -47,7 +47,7 @@ export default async function UpdateBlogPage({ params }: { params: Promise<{ blo
     const { blogId } = await params;
 
     try {
-        const response = await fetch(`http://localhost:5000/api/v1/blog/${blogId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/blog/${blogId}`, {
             next: { tags: [`blog-${blogId}`] },
         });
 

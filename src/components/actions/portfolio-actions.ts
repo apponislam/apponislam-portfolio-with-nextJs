@@ -4,10 +4,7 @@ import { revalidatePath } from "next/cache";
 
 export async function getProjects() {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
-        const url = `${baseUrl}/api/v1/project`;
-
-        const res = await fetch(url, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project`, {
             next: {
                 revalidate: 60, // 60 seconds cache
                 tags: ["projects"],
