@@ -4,7 +4,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function getSkills() {
     try {
-        const response = await fetch("http://localhost:5000/api/v1/skills", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/skills`, {
             method: "GET",
             next: { tags: ["skills"] },
         });
@@ -28,7 +28,7 @@ export async function getSkills() {
 
 export async function getSkillById(skillId: string) {
     try {
-        const response = await fetch(`http://localhost:5000/api/v1/skills/${skillId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/skills/${skillId}`);
         if (!response.ok) throw new Error("Failed to fetch skill");
         const result = await response.json();
         return result.data;
@@ -46,7 +46,7 @@ export async function createSkill(formData: FormData) {
             rating: Number(rawData.rating),
         };
 
-        const response = await fetch("http://localhost:5000/api/v1/skills", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/skills`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export async function createSkill(formData: FormData) {
 // Delete Skill Action
 export async function deleteSkill(skillId: string) {
     try {
-        const response = await fetch(`http://localhost:5000/api/v1/skills/${skillId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/skills/${skillId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export async function updateSkill(skillId: string, formData: FormData) {
             rating: rawData.rating ? Number(rawData.rating) : undefined,
         };
 
-        const response = await fetch(`http://localhost:5000/api/v1/skills/${skillId}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/skills/${skillId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

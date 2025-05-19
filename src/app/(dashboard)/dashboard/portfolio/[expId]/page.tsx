@@ -12,16 +12,18 @@ import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
 import { ProjectsInterface } from "@/components/config/projects";
 
-interface ProjectsPageProps {
-    params: {
-        expId: string;
-    };
-}
+// interface ProjectsPageProps {
+//     params: {
+//         expId: string;
+//     };
+// }
+
+type Params = Promise<{ expId: string }>;
 
 const githubUsername = "apponislam";
 
 async function getProjectById(expId: string) {
-    const res = await fetch(`http://localhost:5000/api/v1/project/${expId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${expId}`, {
         next: { revalidate: 60 },
     });
 
@@ -33,10 +35,8 @@ async function getProjectById(expId: string) {
     return response.data;
 }
 
-export default async function ProjectsPage({ params }: ProjectsPageProps) {
-    // Move all usage of `params` inside the async function body.
-
-    const { expId } = params;
+export default async function ProjectsPage({ params }: { params: Params }) {
+    const { expId } = await params;
 
     let exp: ProjectsInterface;
 
