@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,14 +7,21 @@ import { Icons } from "@/components/icons";
 import ChipContainer from "./chip-container";
 import { ProjectsInterface } from "./config/projects";
 import { Badge } from "./ui/badge";
+import aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+    useEffect(() => {
+        aos.init();
+    }, []);
+
     return (
-        <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-transparent dark:border-gray-700">
+        <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-transparent dark:border-gray-700" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <div className="relative w-full h-[200px]">
                 <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src={project.companyLogoImg} alt="img" fill />
                 {/* <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}

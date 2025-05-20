@@ -15,10 +15,7 @@ const HomeSkills = async () => {
 
     return (
         <div className="py-12">
-            <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-bold text-center mb-8">My Key Skills</h2>
-                {featuredSkills.length > 0 ? <SkillsCard skills={featuredSkills} /> : <p className="text-center text-muted-foreground">Check back soon to see my skills showcase</p>}
-            </div>
+            <div className="container mx-auto px-4">{featuredSkills.length > 0 ? <SkillsCard skills={featuredSkills} /> : <p className="text-center text-muted-foreground">Check back soon to see my skills showcase</p>}</div>
         </div>
     );
 };
