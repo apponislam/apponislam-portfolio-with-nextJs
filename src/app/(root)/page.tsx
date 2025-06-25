@@ -5,11 +5,7 @@ import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import ScrollButton from "@/components/ScrollButton";
-// import SkillsCard from "@/components/skills-card";
 import { pagesConfig } from "@/components/config/pages";
-// import { featuredSkills } from "@/components/config/skills";
-import ProjectCard from "@/components/project-card";
-import { featuredProjects } from "@/components/config/projects";
 import HomeSkills from "@/components/Home-skills";
 import { FeaturedProjects } from "@/components/featured-projects";
 
