@@ -15,9 +15,9 @@ export default function CustomTooltip({ children, text, icon }: CustomTooltipPro
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger asChild>{children}</TooltipTrigger>
-                <TooltipContent className="flex text-muted-foreground items-center">
-                    <IconComponent className="w-4 h-4 mr-2" />
-                    <span>{text}</span>
+                <TooltipContent className="flex items-center text-sm bg-background border text-foreground shadow-md">
+                    <IconComponent className="w-4 h-4 mr-2 text-foreground" />
+                    <span className="text-foreground">{text}</span>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
