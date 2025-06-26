@@ -276,48 +276,6 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
         }
     };
 
-    // async function onSubmit(values: z.infer<typeof formSchema>) {
-    //     try {
-    //         const payload = {
-    //             userId: id,
-    //             ...values,
-    //             startDate: values.startDate.toISOString(),
-    //             endDate: values.endDate?.toISOString(),
-    //         };
-
-    //         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${projectId}`, {
-    //             method: "PATCH",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(payload),
-    //         });
-
-    //         const responseData = await response.json();
-
-    //         if (response.ok) {
-    //             storeModal.onOpen({
-    //                 title: "Success!",
-    //                 description: "Project has been updated successfully!",
-    //                 icon: Icons.successAnimated,
-    //             });
-    //         } else {
-    //             storeModal.onOpen({
-    //                 title: "Error",
-    //                 description: responseData.message || "Failed to update project.",
-    //                 icon: Icons.failedAnimated,
-    //             });
-    //         }
-    //     } catch (err) {
-    //         console.error("Error submitting form:", err);
-    //         storeModal.onOpen({
-    //             title: "Error",
-    //             description: "An unexpected error occurred.",
-    //             icon: Icons.failedAnimated,
-    //         });
-    //     }
-    // }
-
     const router = useRouter();
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
