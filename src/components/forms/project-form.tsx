@@ -36,7 +36,7 @@ const formSchema = z.object({
     }),
     websiteLink: z.string().url().optional().or(z.literal("")),
     githubLink: z.string().url().optional().or(z.literal("")),
-    techStack: z.array(z.enum(["Next.js", "React", "GraphQL", "express.js", "Node.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "React Native", "Angular", "Redux", "Material UI", "Tailwind CSS", "Bootstrap", "Google Auth", "MySQL"])).nonempty({
+    techStack: z.array(z.enum(["Next.js", "React", "GraphQL", "Express.js", "Node.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "React Native", "Angular", "Redux", "Material UI", "Tailwind CSS", "Bootstrap", "Google Auth", "MySQL", "JWT", "TanStack Query", "react-hook-form", "SurjoPay", "Prisma", "PostgreSQL"])).nonempty({
         message: "Please select at least one technology.",
     }),
     startDate: z.date({
@@ -426,7 +426,7 @@ const ProjectForm = ({ id }: { id: string }) => {
                                         <CommandInput placeholder="Search technologies..." />
                                         <CommandEmpty>No technology found.</CommandEmpty>
                                         <CommandGroup>
-                                            {["Next.js", "React", "GraphQL", "express.js", "Node.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "React Native", "Angular", "Redux", "Material UI", "Tailwind CSS", "Bootstrap", "Google Auth", "MySQL"].map((tech) => (
+                                            {["Next.js", "React", "GraphQL", "Express.js", "Node.js", "MongoDB", "Firebase", "Typescript", "Javascript", "HTML 5", "CSS 3", "React Native", "Angular", "Redux", "Material UI", "Tailwind CSS", "Bootstrap", "Google Auth", "MySQL", "JWT", "TanStack Query", "react-hook-form", "SurjoPay", "Prisma", "PostgreSQL"].map((tech) => (
                                                 <CommandItem
                                                     value={tech}
                                                     key={tech}
