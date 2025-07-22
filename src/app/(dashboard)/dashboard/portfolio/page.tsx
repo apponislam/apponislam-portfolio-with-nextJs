@@ -6,6 +6,11 @@ import { cn } from "@/lib/utils";
 import { SquarePlus } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Portfolio Management",
+    description: "Control and update your portfolio items to showcase your work effectively.",
+};
+
 function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
     return <div className={cn("flex items-center justify-center mb-4 md:mb-0 [&>div]:w-full", className)} {...props} />;
 }

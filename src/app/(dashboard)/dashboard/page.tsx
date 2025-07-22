@@ -3,6 +3,11 @@ import { getServerSession } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+export const metadata = {
+    title: "Dashboard",
+    description: "My personal dashboard with profile and activity overview.",
+};
+
 const page = async () => {
     const session = await getServerSession(authOptions);
 

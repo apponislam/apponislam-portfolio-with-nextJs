@@ -5,18 +5,11 @@ import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, formatDateFromObj } from "@/lib/utils";
-// import { Projects } from "@/components/config/projects";
 import apponislam from "../../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
 import { ProjectsInterface } from "@/components/config/projects";
-
-// interface ProjectsPageProps {
-//     params: {
-//         expId: string;
-//     };
-// }
 
 type Params = Promise<{ expId: string }>;
 
@@ -46,16 +39,6 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         console.log(err);
         redirect("/dashboard/portfolio");
     }
-
-    // if (!exp) {
-    //     redirect("/projects");
-    // }
-
-    // const exp = Projects.find((val) => val._id === params.expId);
-
-    // if (!exp) {
-    //     redirect("/projects");
-    // }
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">

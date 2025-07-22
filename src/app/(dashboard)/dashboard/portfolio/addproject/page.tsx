@@ -5,6 +5,11 @@ import { Undo2 } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Add Project",
+    description: "Add a new project to showcase your work and professional accomplishments.",
+};
+
 const page = async () => {
     const session = await getServerSession(authOptions);
 

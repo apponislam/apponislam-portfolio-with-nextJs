@@ -2,6 +2,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SkillAddForm } from "@/components/forms/skill-add-form";
 
+export const metadata = {
+    title: "Add Skill",
+    description: "Add a new professional skill to your profile to highlight your expertise.",
+};
+
 export default function AddSkillPage() {
     return (
         <div className="space-y-6">
