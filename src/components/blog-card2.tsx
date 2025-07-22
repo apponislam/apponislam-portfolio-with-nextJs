@@ -29,7 +29,7 @@ export function BlogCard2({ blog }: BlogCardProps) {
     const readTime = Math.ceil(wordCount / 200);
 
     return (
-        <Card className="h-full flex flex-col p-0 relative hover:shadow-lg transition-shadow">
+        <Card className="h-full flex flex-col p-0 relative hover:shadow-lg transition-shadow gap-0">
             <CardHeader className="p-0">
                 <div className="relative aspect-video w-full">
                     <Image src={blog.coverImage} alt={blog.title} fill className="object-cover rounded-t-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />

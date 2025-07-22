@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { getSkillById } from "@/components/actions/skill-actions";
 import { SkillUpdateForm } from "./update-skill-form";
+import Head from "next/head";
 
 export default function SkillEditPage() {
     const params = useParams<{ skillId: string }>();
@@ -65,9 +66,12 @@ export default function SkillEditPage() {
             </div>
         );
     }
-
     return (
         <div className="p-6">
+            <Head>
+                <title>{skill ? `Edit Skill: ${skill.name}` : "Edit Skill"}</title>
+                <meta name="description" content={skill ? `Update details for the skill: ${skill.name}` : "Edit skill details"} />
+            </Head>
             <h1 className="text-2xl font-bold mb-6">Edit Skill</h1>
             <SkillUpdateForm skill={skill} />
         </div>

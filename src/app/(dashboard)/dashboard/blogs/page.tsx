@@ -4,25 +4,28 @@ import { cn } from "@/lib/utils";
 import { SquarePlus } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Manage Blogs",
+    description: "Manage all your blog posts from one place.",
+};
+
 interface BlogInterface {
     _id: string;
-    authorId: string; // Missing in your current interface
+    authorId: string;
     title: string;
     type: "Technical" | "Tutorial" | "Opinion" | "Case Study";
     categories: ("Web Dev" | "Mobile" | "DevOps" | "Career" | "Productivity")[];
-    tags: string[]; // Missing in your current interface
+    tags: string[];
     coverImage: string;
     contentDetails: {
         paragraphs: string[];
         keyPoints: string[];
         codeSnippets?: {
-            // Missing in your current interface
             language: string;
             code: string;
         }[];
     };
     sections: {
-        // Missing in your current interface
         title: string;
         images: string[];
         content?: string;
@@ -32,11 +35,10 @@ interface BlogInterface {
         }[];
     }[];
     externalLinks?: {
-        // Missing in your current interface
         label: string;
         url: string;
     }[];
-    repositoryUrl?: string; // Missing in your current interface
+    repositoryUrl?: string;
     createdAt: string;
     updatedAt: string;
 }

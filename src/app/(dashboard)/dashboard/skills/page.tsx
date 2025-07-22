@@ -4,6 +4,11 @@ import { getSkills } from "@/components/actions/skill-actions";
 import SkillsCard2 from "@/components/skills-card2";
 import { PlusCircle } from "lucide-react";
 
+export const metadata = {
+    title: "Skills Management",
+    description: "Add, edit, and manage your professional skills to enhance your portfolio.",
+};
+
 const SkillsPage = async () => {
     let skills = [];
     let error = null;
@@ -19,7 +24,6 @@ const SkillsPage = async () => {
 
     return (
         <div className="flex flex-col gap-6 p-3 md:p-6">
-            {/* Header section */}
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold tracking-tight">Skills Dashboard</h1>
@@ -33,10 +37,8 @@ const SkillsPage = async () => {
                 </Link>
             </div>
 
-            {/* Divider */}
             <div className="border-b" />
 
-            {/* Error state */}
             {error && (
                 <div className="bg-red-50 border border-red-200 rounded-md p-4 text-red-800">
                     <p>Error loading skills: {error}</p>
@@ -44,7 +46,6 @@ const SkillsPage = async () => {
                 </div>
             )}
 
-            {/* Skills Card or Empty State */}
             {!error && (
                 <>
                     {hasSkills ? (

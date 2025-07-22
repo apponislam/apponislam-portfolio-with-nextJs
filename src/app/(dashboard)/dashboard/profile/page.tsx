@@ -5,7 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Icons } from "@/components/icons";
-// hii
+
+export const metadata = {
+    title: "Profile",
+    description: "View and update your personal profile information from your dashboard.",
+};
+
 const ProviderIcons = {
     Email: () => <Icons.gmail className="h-4 w-4" />,
     Google: () => <Icons.google className="h-4 w-4" />,
