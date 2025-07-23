@@ -5,25 +5,44 @@ import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, formatDateFromObj } from "@/lib/utils";
-// import { Projects } from "@/components/config/projects";
 import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
 import { ProjectsInterface } from "@/components/config/projects";
+import { Metadata } from "next";
 
-// interface ProjectsPageProps {
-//     params: {
-//         expId: string;
-//     };
-// }
+type Props = {
+    params: Promise<{ expId: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { expId } = await params;
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${expId}`, {
+        next: { revalidate: 2 },
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch project");
+    }
+
+    const response = await res.json();
+    const post = response.data;
+
+    return {
+        title: post.companyName,
+        description: post.shortDescription,
+    };
+}
+
 type Params = Promise<{ expId: string }>;
 
 const githubUsername = "apponislam";
 
 async function getProjectById(expId: string) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${expId}`, {
-        next: { revalidate: 60 },
+        next: { revalidate: 2 },
     });
 
     if (!res.ok) {
@@ -35,8 +54,6 @@ async function getProjectById(expId: string) {
 }
 
 export default async function ProjectsPage({ params }: { params: Params }) {
-    // Move all usage of `params` inside the async function body.
-
     const { expId } = await params;
 
     let exp: ProjectsInterface;
@@ -47,16 +64,6 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         console.log(err);
         redirect("/projects");
     }
-
-    // if (!exp) {
-    //     redirect("/projects");
-    // }
-
-    // const exp = Projects.find((val) => val._id === params.expId);
-
-    // if (!exp) {
-    //     redirect("/projects");
-    // }
 
     return (
         <article className="container relative max-w-3xl py-6 lg:py-10 mx-auto">
