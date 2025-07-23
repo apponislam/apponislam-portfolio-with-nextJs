@@ -6,6 +6,29 @@ import { Badge } from "@/components/ui/badge";
 import { CalendarDays, Clock, ExternalLink, Github, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+
+type Props = {
+    params: Promise<{ blogId: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { blogId } = await params;
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/blog/${blogId}`);
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch project");
+    }
+
+    const response = await res.json();
+    const post = response.data;
+
+    return {
+        title: post.title,
+        description: post.title,
+    };
+}
 
 async function getBlogPost(id: string) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/blog/${id}`);
