@@ -11,22 +11,25 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { useRouter } from "next/navigation";
 import { ProjectsInterface } from "./config/projects";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { deleteProjectPage } from "./actions/portfolio-actions";
+import { useDeleteProjectMutation } from "@/redux/features/projects/projectApi";
 
 export function ProjectCard2({ project }: { project: ProjectsInterface }) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
 
+    const [deleteProject, { isLoading: isDeleting }] = useDeleteProjectMutation();
+
     const handleEdit = () => router.push(`/dashboard/portfolio/${project._id}/edit`);
 
     const handleDeleteConfirmed = async () => {
-        const result = await deleteProjectPage(project._id);
-        if (result.success) {
-            router.refresh();
-        } else {
-            console.error(result.error);
+        try {
+            await deleteProject(project._id).unwrap(); // unwrap ensures we catch errors properly
+            setOpen(false);
+            // refresh page to reflect deletion if needed (but usually RTK Query handles this)
+            // router.refresh();
+        } catch (error) {
+            console.error("Failed to delete project:", error);
         }
-        setOpen(false);
     };
 
     return (
@@ -110,8 +113,8 @@ export function ProjectCard2({ project }: { project: ProjectsInterface }) {
                         <Button variant="secondary" onClick={() => setOpen(false)}>
                             Cancel
                         </Button>
-                        <Button variant="destructive" onClick={handleDeleteConfirmed}>
-                            Delete
+                        <Button variant="destructive" onClick={handleDeleteConfirmed} disabled={isDeleting}>
+                            {isDeleting ? "Deleting..." : "Delete"}
                         </Button>
                     </DialogFooter>
                 </DialogContent>

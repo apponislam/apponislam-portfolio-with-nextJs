@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
 import Image from "next/image";
+import { useCreateProjectMutation } from "@/redux/features/projects/projectApi";
+import { useRouter } from "next/navigation";
 
 interface CloudinaryUploadResponse {
     secure_url: string;
@@ -221,6 +223,52 @@ const ProjectForm = ({ id }: { id: string }) => {
         }
     };
 
+    const [createProject, { isLoading }] = useCreateProjectMutation();
+    const router = useRouter();
+
+    // async function onSubmit(values: z.infer<typeof formSchema>) {
+    //     try {
+    //         const payload = {
+    //             userId: id,
+    //             ...values,
+    //             startDate: values.startDate.toISOString(),
+    //             endDate: values.endDate?.toISOString(),
+    //         };
+
+    //         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(payload),
+    //         });
+
+    //         const responseData = await response.json();
+
+    //         if (response.ok) {
+    //             form.reset();
+    //             storeModal.onOpen({
+    //                 title: "Success!",
+    //                 description: "Project has been added successfully!",
+    //                 icon: Icons.successAnimated,
+    //             });
+    //         } else {
+    //             storeModal.onOpen({
+    //                 title: "Error",
+    //                 description: responseData.message || "Failed to add project.",
+    //                 icon: Icons.failedAnimated,
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.error("Error submitting form:", err);
+    //         storeModal.onOpen({
+    //             title: "Error",
+    //             description: "An unexpected error occurred.",
+    //             icon: Icons.failedAnimated,
+    //         });
+    //     }
+    // }
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const payload = {
@@ -230,35 +278,22 @@ const ProjectForm = ({ id }: { id: string }) => {
                 endDate: values.endDate?.toISOString(),
             };
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
+            // Use RTK mutation
+            const responseData = await createProject(payload).unwrap();
+            console.log(responseData);
+
+            form.reset();
+            storeModal.onOpen({
+                title: "Success!",
+                description: "Project has been added successfully!",
+                icon: Icons.successAnimated,
             });
-
-            const responseData = await response.json();
-
-            if (response.ok) {
-                form.reset();
-                storeModal.onOpen({
-                    title: "Success!",
-                    description: "Project has been added successfully!",
-                    icon: Icons.successAnimated,
-                });
-            } else {
-                storeModal.onOpen({
-                    title: "Error",
-                    description: responseData.message || "Failed to add project.",
-                    icon: Icons.failedAnimated,
-                });
-            }
-        } catch (err) {
+            router.push("/dashboard/portfolio");
+        } catch (err: any) {
             console.error("Error submitting form:", err);
             storeModal.onOpen({
                 title: "Error",
-                description: "An unexpected error occurred.",
+                description: err?.data?.message || "Failed to add project.",
                 icon: Icons.failedAnimated,
             });
         }
@@ -677,7 +712,10 @@ const ProjectForm = ({ id }: { id: string }) => {
                     </Button>
                 </div>
 
-                <Button type="submit">Add Project</Button>
+                {/* <Button type="submit">Add Project</Button> */}
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? "Saving..." : "Add Project"}
+                </Button>
             </form>
         </Form>
     );
