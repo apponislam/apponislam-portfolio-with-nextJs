@@ -17,9 +17,9 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { updateProject } from "../actions/portfolio-actions";
 import { useRouter } from "next/navigation";
+import { useGetProjectByIdQuery, useUpdateProjectMutation } from "@/redux/features/projects/projectApi";
+import { useEffect } from "react";
 
 interface CloudinaryUploadResponse {
     secure_url: string;
@@ -90,10 +90,63 @@ interface ProjectUpdateFormProps {
 }
 
 const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
+    // const storeModal = useModalStore();
+
+    // // RTK Query fetch
+    // const { data, isLoading } = useGetProjectByIdQuery(projectId);
+
+    // console.log(data);
+
+    // // Transform fetched data for form defaultValues
+    // const defaultValues = data
+    //     ? {
+    //           ...data.data,
+    //           startDate: data.data.startDate ? parseISO(data.data.startDate) : new Date(),
+    //           endDate: data.data.endDate ? parseISO(data.data.endDate) : undefined,
+    //           descriptionDetails: {
+    //               paragraphs: data.data.descriptionDetails?.paragraphs || [""],
+    //               bullets: data.data.descriptionDetails?.bullets || [],
+    //           },
+    //           pagesInfoArr: data.data.pagesInfoArr || [
+    //               {
+    //                   title: "",
+    //                   imgArr: [""],
+    //                   description: "",
+    //               },
+    //           ],
+    //       }
+    //     : undefined;
+
+    // const form = useForm<z.infer<typeof formSchema>>({
+    //     resolver: zodResolver(formSchema),
+    //     defaultValues: defaultValues ?? {
+    //         type: "Professional",
+    //         companyName: "",
+    //         category: [],
+    //         shortDescription: "",
+    //         websiteLink: "",
+    //         githubLink: "",
+    //         techStack: [],
+    //         endDate: undefined,
+    //         companyLogoImg: "",
+    //         descriptionDetails: {
+    //             paragraphs: [""],
+    //             bullets: [],
+    //         },
+    //         pagesInfoArr: [
+    //             {
+    //                 title: "",
+    //                 imgArr: [""],
+    //                 description: "",
+    //             },
+    //         ],
+    //     },
+    // });
+
     const storeModal = useModalStore();
-    const [isLoading, setIsLoading] = useState(true);
-    const [initialData, setInitialData] = useState<any>(null);
-    console.log(initialData);
+
+    // RTK Query fetch
+    const { data, isLoading } = useGetProjectByIdQuery(projectId);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -121,50 +174,27 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
         },
     });
 
-    // Fetch project data and set form values
+    // Reset form when data arrives
     useEffect(() => {
-        const fetchProjectData = async () => {
-            try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${projectId}`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch project");
-                }
-                const data = await response.json();
-                setInitialData(data.data);
-
-                // Transform the data to match the form schema
-                const transformedData = {
-                    ...data.data,
-                    startDate: data.data.startDate ? parseISO(data.data.startDate) : new Date(),
-                    endDate: data.data.endDate ? parseISO(data.data.endDate) : undefined,
-                    descriptionDetails: {
-                        paragraphs: data.data.descriptionDetails?.paragraphs || [""],
-                        bullets: data.data.descriptionDetails?.bullets || [],
+        if (data?.data) {
+            form.reset({
+                ...data.data,
+                startDate: data.data.startDate ? parseISO(data.data.startDate) : new Date(),
+                endDate: data.data.endDate ? parseISO(data.data.endDate) : undefined,
+                descriptionDetails: {
+                    paragraphs: data.data.descriptionDetails?.paragraphs || [""],
+                    bullets: data.data.descriptionDetails?.bullets || [],
+                },
+                pagesInfoArr: data.data.pagesInfoArr || [
+                    {
+                        title: "",
+                        imgArr: [""],
+                        description: "",
                     },
-                    pagesInfoArr: data.data.pagesInfoArr || [
-                        {
-                            title: "",
-                            imgArr: [""],
-                            description: "",
-                        },
-                    ],
-                };
-
-                form.reset(transformedData);
-            } catch (error) {
-                console.error("Error fetching project:", error);
-                storeModal.onOpen({
-                    title: "Error",
-                    description: "Failed to load project data.",
-                    icon: Icons.failedAnimated,
-                });
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchProjectData();
-    }, [projectId, form, storeModal]);
+                ],
+            });
+        }
+    }, [data, form]);
 
     const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>, onChange: (url: string) => void) => {
         const file = event.target.files?.[0];
@@ -277,6 +307,47 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
     };
 
     const router = useRouter();
+
+    // const [updateProjects, { isLoading: updateLoading }] = useUpdateProjectMutation();
+
+    // async function onSubmit(values: z.infer<typeof formSchema>) {
+    //     try {
+    //         const payload = {
+    //             userId: id,
+    //             ...values,
+    //             startDate: values.startDate.toISOString(),
+    //             endDate: values.endDate?.toISOString(),
+    //         };
+
+    //         const result = await updateProject(projectId, payload);
+
+    //         if (result.success) {
+    //             router.refresh();
+    //             storeModal.onOpen({
+    //                 title: "Success!",
+    //                 description: "Project has been updated successfully!",
+    //                 icon: Icons.successAnimated,
+    //             });
+    //             router.push("/dashboard/portfolio");
+    //         } else {
+    //             storeModal.onOpen({
+    //                 title: "Error",
+    //                 description: result.error,
+    //                 icon: Icons.failedAnimated,
+    //             });
+    //         }
+    //     } catch (err) {
+    //         console.error("Error submitting form:", err);
+    //         storeModal.onOpen({
+    //             title: "Error",
+    //             description: "An unexpected error occurred.",
+    //             icon: Icons.failedAnimated,
+    //         });
+    //     }
+    // }
+
+    const [updateProject, { isLoading: updateLoading }] = useUpdateProjectMutation();
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const payload = {
@@ -286,28 +357,22 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
                 endDate: values.endDate?.toISOString(),
             };
 
-            const result = await updateProject(projectId, payload);
+            // ✅ Call mutation function here
+            await updateProject({ id: projectId, data: payload }).unwrap();
 
-            if (result.success) {
-                router.refresh();
-                storeModal.onOpen({
-                    title: "Success!",
-                    description: "Project has been updated successfully!",
-                    icon: Icons.successAnimated,
-                });
-                router.push("/dashboard/portfolio");
-            } else {
-                storeModal.onOpen({
-                    title: "Error",
-                    description: result.error,
-                    icon: Icons.failedAnimated,
-                });
-            }
-        } catch (err) {
-            console.error("Error submitting form:", err);
+            storeModal.onOpen({
+                title: "Success!",
+                description: "Project has been updated successfully!",
+                icon: Icons.successAnimated,
+            });
+
+            router.push("/dashboard/portfolio");
+        } catch (err: any) {
+            console.error("Error updating project:", err);
+
             storeModal.onOpen({
                 title: "Error",
-                description: "An unexpected error occurred.",
+                description: err?.data?.message || "Failed to update project.",
                 icon: Icons.failedAnimated,
             });
         }
@@ -734,7 +799,9 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
                     </Button>
                 </div>
 
-                <Button type="submit">Update Project</Button>
+                <Button type="submit" disabled={updateLoading}>
+                    {updateLoading ? "Updating..." : "Update Project"}
+                </Button>
             </form>
         </Form>
     );
