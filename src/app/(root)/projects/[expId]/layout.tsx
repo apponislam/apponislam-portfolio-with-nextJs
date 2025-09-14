@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { store } from "@/redux/store";
 import { projectApi } from "@/redux/features/projects/projectApi";
 
@@ -7,23 +7,22 @@ export async function generateMetadata({ params }: { params: Promise<{ expId: st
     const { expId } = await params;
 
     try {
-        // Dispatch RTK query on the server
         const result = await store.dispatch(projectApi.endpoints.getProjectById.initiate(expId));
         const project = result.data?.data; // actual project object
 
         return {
-            title: project ? `Edit ${project.companyName}` : "Edit Project",
-            description: project ? `Editing ${project.companyName} - ${project.type}` : "Project editor",
+            title: project ? project.companyName : "Project",
+            description: project ? project.shortDescription : "Project details",
         };
     } catch (error) {
-        console.error("Failed to generate metadata:", error);
+        console.error(error);
         return {
-            title: "Edit Project",
-            description: "Project editor",
+            title: "Project",
+            description: "Project details",
         };
     }
 }
 
-export default function EditProjectLayout({ children }: { children: ReactNode }) {
-    return <div className="edit-project-layout">{children}</div>;
+export default function ProjectLayout({ children }: { children: ReactNode }) {
+    return <div className="project-layout">{children}</div>;
 }

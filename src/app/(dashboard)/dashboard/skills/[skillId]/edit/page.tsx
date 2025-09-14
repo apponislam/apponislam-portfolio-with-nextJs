@@ -5,8 +5,10 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { getSkillById } from "@/components/actions/skill-actions";
-import { SkillUpdateForm } from "./update-skill-form";
+import { SkillUpdateForm } from "../../../../../../components/forms/update-skill-form";
 import Head from "next/head";
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 
 export default function SkillEditPage() {
     const params = useParams<{ skillId: string }>();
@@ -72,7 +74,16 @@ export default function SkillEditPage() {
                 <title>{skill ? `Edit Skill: ${skill.name}` : "Edit Skill"}</title>
                 <meta name="description" content={skill ? `Update details for the skill: ${skill.name}` : "Edit skill details"} />
             </Head>
-            <h1 className="text-2xl font-bold mb-6">Edit Skill</h1>
+            {/* <h1 className="text-2xl font-bold mb-6">Edit Skill</h1> */}
+            {/* Back button as just an icon */}
+            <div className="flex items-center mb-6">
+                <Link href="/dashboard/skills">
+                    <Button variant="outline" className="p-2 w-10 h-10 flex items-center justify-center">
+                        <ChevronLeft className="w-5 h-5" />
+                    </Button>
+                </Link>
+                <h1 className="text-2xl font-bold ml-4">Edit Skill</h1>
+            </div>
             <SkillUpdateForm skill={skill} />
         </div>
     );

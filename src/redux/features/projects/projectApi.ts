@@ -1,4 +1,11 @@
+import { ProjectsInterface } from "@/components/config/projects";
 import baseApi from "@/redux/api/baseApi";
+
+interface GetProjectByIdResponse {
+    success: boolean;
+    message: string;
+    data: ProjectsInterface;
+}
 
 export const projectApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -39,7 +46,7 @@ export const projectApi = baseApi.injectEndpoints({
             providesTags: ["Project"],
         }),
 
-        getProjectById: builder.query<any, string>({
+        getProjectById: builder.query<GetProjectByIdResponse, string>({
             query: (id) => `/project/${id}`,
             providesTags: ["Project"],
         }),

@@ -12,7 +12,7 @@ import { useModalStore } from "../hooks/use-modal-store";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarIcon, Check, ChevronsUpDown, Plus, X } from "lucide-react";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
@@ -175,23 +175,62 @@ const ProjectUpdateForm = ({ id, projectId }: ProjectUpdateFormProps) => {
     });
 
     // Reset form when data arrives
+    // useEffect(() => {
+    //     if (data?.data) {
+    //         form.reset({
+    //             ...data.data,
+    //             startDate: data.data.startDate ? parseISO(data.data.startDate) : new Date(),
+    //             endDate: data.data.endDate ? parseISO(data.data.endDate) : undefined,
+    //             descriptionDetails: {
+    //                 paragraphs: data.data.descriptionDetails?.paragraphs || [""],
+    //                 bullets: data.data.descriptionDetails?.bullets || [],
+    //             },
+    //             pagesInfoArr: data.data.pagesInfoArr || [
+    //                 {
+    //                     title: "",
+    //                     imgArr: [""],
+    //                     description: "",
+    //                 },
+    //             ],
+    //         });
+    //     }
+    // }, [data, form]);
+
     useEffect(() => {
         if (data?.data) {
+            const project = data.data;
+
+            // Map techStack to match the valid schema strings
+            const mappedTechStack = project.techStack.map((tech: string) => {
+                switch (tech.toLowerCase()) {
+                    case "express.js":
+                        return "Express.js";
+                    case "node.js":
+                        return "Node.js";
+                    case "typescript":
+                        return "Typescript";
+                    case "next.js":
+                        return "Next.js";
+                    case "react":
+                        return "React";
+                    case "tailwind css":
+                        return "Tailwind CSS";
+                    default:
+                        return tech as any;
+                }
+            });
+
             form.reset({
-                ...data.data,
-                startDate: data.data.startDate ? parseISO(data.data.startDate) : new Date(),
-                endDate: data.data.endDate ? parseISO(data.data.endDate) : undefined,
+                ...project,
+                startDate: project.startDate ? new Date(project.startDate) : new Date(),
+                endDate: project.endDate ? new Date(project.endDate) : undefined,
                 descriptionDetails: {
-                    paragraphs: data.data.descriptionDetails?.paragraphs || [""],
-                    bullets: data.data.descriptionDetails?.bullets || [],
+                    paragraphs: project.descriptionDetails?.paragraphs || [""],
+                    bullets: project.descriptionDetails?.bullets || [],
                 },
-                pagesInfoArr: data.data.pagesInfoArr || [
-                    {
-                        title: "",
-                        imgArr: [""],
-                        description: "",
-                    },
-                ],
+                pagesInfoArr: project.pagesInfoArr || [{ title: "", imgArr: [""], description: "" }],
+                techStack: mappedTechStack,
+                companyLogoImg: project.companyLogoImg || "",
             });
         }
     }, [data, form]);

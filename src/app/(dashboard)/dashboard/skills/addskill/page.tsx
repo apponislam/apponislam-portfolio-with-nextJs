@@ -1,6 +1,6 @@
+import { SkillAddForm } from "@/components/forms/skill-add-form";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { SkillAddForm } from "@/components/forms/skill-add-form";
 
 export const metadata = {
     title: "Add Skill",
