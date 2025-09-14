@@ -9,7 +9,7 @@ const baseApi = createApi({
         baseUrl: "http://localhost:5000/api/v1",
     }),
     endpoints: () => ({}),
-    tagTypes: ["Project"],
+    tagTypes: ["Project", "Message"],
 });
 
 export default baseApi;

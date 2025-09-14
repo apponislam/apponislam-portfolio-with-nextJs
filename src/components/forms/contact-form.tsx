@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Icons } from "../icons";
 import { useModalStore } from "../hooks/use-modal-store";
+import { usePostMessageMutation } from "@/redux/features/messages/messageApi";
 
 const formSchema = z.object({
     name: z.string().min(3, {
@@ -22,9 +23,8 @@ const formSchema = z.object({
 });
 
 const ContactForm = () => {
+    const [postMessage, { isLoading }] = usePostMessageMutation();
     const storeModal = useModalStore();
-
-    // const [open, setOpen] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -38,35 +38,21 @@ const ContactForm = () => {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/messages`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(values),
+            await postMessage(values).unwrap();
+
+            form.reset();
+            storeModal.onOpen({
+                title: "Thank you!",
+                description: "Your message has been received! I appreciate your contact and will get back to you shortly.",
+                icon: Icons.successAnimated,
             });
-
-            console.log(response);
-            const responseData = await response.json();
-            console.log(responseData);
-
-            if (response.ok) {
-                form.reset();
-
-                storeModal.onOpen({
-                    title: "Thankyou!",
-                    description: "Your message has been received! I appreciate your contact and will get back to you shortly.",
-                    icon: Icons.successAnimated,
-                });
-            } else if (!response.ok) {
-                storeModal.onOpen({
-                    title: "Oops!",
-                    description: responseData.message || "Your message send failed.",
-                    icon: Icons.failedAnimated,
-                });
-            }
-        } catch (err) {
-            console.log("Err!", err);
+        } catch (err: any) {
+            // Show error modal
+            storeModal.onOpen({
+                title: "Oops!",
+                description: err?.data?.message || "Your message send failed.",
+                icon: Icons.failedAnimated,
+            });
         }
     }
 
@@ -131,7 +117,9 @@ const ContactForm = () => {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" disabled={isLoading}>
+                    {isLoading ? "Sending..." : "Send Message"}
+                </Button>
             </form>
         </Form>
     );
