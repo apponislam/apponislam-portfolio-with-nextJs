@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { getSkillById } from "@/components/actions/skill-actions";
+import { skillApi } from "@/redux/features/skills/skillApi";
+import { store } from "@/redux/store";
 
-type Params = Promise<{ skillId: string }>;
+type Params = { skillId: string };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
     try {
-        const { skillId } = await params;
+        const { skillId } = params;
 
-        const skill = await getSkillById(skillId);
+        // Use RTK Query's initiate method to fetch data on the server
+        const result = await store.dispatch(skillApi.endpoints.getSkillById.initiate(skillId));
+
+        console.log(result);
+
+        const skill = result.data?.data || null;
 
         return {
             title: skill ? `Edit ${skill.name}` : "Edit Skill",

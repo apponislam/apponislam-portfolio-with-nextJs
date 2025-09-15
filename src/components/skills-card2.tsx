@@ -1,15 +1,13 @@
 "use client";
 
 import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-
+import { useDeleteSkillMutation } from "@/redux/features/skills/skillApi"; // <-- RTK Query mutation
 import Rating from "./rating";
-import { deleteSkill } from "./actions/skill-actions";
 import { iconMap } from "./ui/icons";
 
 interface ISkills {
@@ -31,6 +29,9 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
     const [open, setOpen] = useState(false);
     const [selectedSkill, setSelectedSkill] = useState<ISkills | null>(null);
 
+    // RTK Query mutation hook
+    const [deleteSkill, { isLoading: isDeleting }] = useDeleteSkillMutation();
+
     const handleEdit = (skillId: string) => {
         router.push(`/dashboard/skills/${skillId}/edit`);
     };
@@ -43,13 +44,14 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
     const handleDeleteConfirmed = async () => {
         if (!selectedSkill) return;
 
-        const result = await deleteSkill(selectedSkill._id);
-        if (result.success) {
-            router.refresh();
-        } else {
-            console.error(result.error);
+        try {
+            await deleteSkill(selectedSkill._id).unwrap(); // unwrap to handle errors
+            router.refresh(); // refresh page or RTK Query cache will update automatically
+        } catch (err) {
+            console.error("Failed to delete skill:", err);
+        } finally {
+            setOpen(false);
         }
-        setOpen(false);
     };
 
     return (
@@ -103,7 +105,7 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
                         <Button variant="secondary" onClick={() => setOpen(false)}>
                             Cancel
                         </Button>
-                        <Button variant="destructive" onClick={handleDeleteConfirmed}>
+                        <Button variant="destructive" onClick={handleDeleteConfirmed} disabled={isDeleting}>
                             Delete
                         </Button>
                     </DialogFooter>
