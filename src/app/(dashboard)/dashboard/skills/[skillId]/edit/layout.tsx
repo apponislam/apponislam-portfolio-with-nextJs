@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { skillApi } from "@/redux/features/skills/skillApi";
 import { store } from "@/redux/store";
 
-type Params = { skillId: string };
+export async function generateMetadata({ params }: { params: Promise<{ skillId: string }> }): Promise<Metadata> {
+    const { skillId } = await params;
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
     try {
-        const { skillId } = params;
-
         // Use RTK Query's initiate method to fetch data on the server
         const result = await store.dispatch(skillApi.endpoints.getSkillById.initiate(skillId));
 
