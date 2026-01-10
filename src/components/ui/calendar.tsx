@@ -21,6 +21,8 @@ interface CalendarProps {
 function Calendar({ className, mode = "single", selected, onSelect, disabled, initialFocus, showOutsideDays = true, ...props }: CalendarProps) {
     const [internalDate, setInternalDate] = React.useState<Date | null>(selected || null);
 
+    console.log(initialFocus, mode);
+
     React.useEffect(() => {
         setInternalDate(selected || null);
     }, [selected]);
