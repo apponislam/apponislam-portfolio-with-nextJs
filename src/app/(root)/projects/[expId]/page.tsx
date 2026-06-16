@@ -4,31 +4,33 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
-import { cn, formatDateFromObj } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
-import { ProjectsInterface } from "@/components/config/projects";
+import { Projects, ProjectsInterface } from "@/components/config/projects";
 import { Metadata } from "next";
 
 type Props = {
     params: Promise<{ expId: string }>;
 };
 
+export async function generateStaticParams() {
+    return Projects.map((project) => ({
+        expId: project._id,
+    }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { expId } = await params;
+    const post = Projects.find((project) => project._id === expId);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${expId}`, {
-        next: { revalidate: 2 },
-    });
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch project");
+    if (!post) {
+        return {
+            title: "Project Not Found",
+        };
     }
-
-    const response = await res.json();
-    const post = response.data;
 
     return {
         title: post.companyName,
@@ -41,16 +43,11 @@ type Params = Promise<{ expId: string }>;
 const githubUsername = "apponislam";
 
 async function getProjectById(expId: string) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project/${expId}`, {
-        next: { revalidate: 2 },
-    });
-
-    if (!res.ok) {
+    const project = Projects.find((p) => p._id === expId);
+    if (!project) {
         throw new Error("Failed to fetch project");
     }
-
-    const response = await res.json();
-    return response.data;
+    return project;
 }
 
 export default async function ProjectsPage({ params }: { params: Params }) {
@@ -72,8 +69,8 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 All Projects
             </Link>
             <div>
-                <time dateTime={Date.now().toString()} className="block text-sm text-muted-foreground">
-                    {formatDateFromObj(exp.startDate)}
+                <time dateTime={exp.startDate} className="block text-sm text-muted-foreground">
+                    {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                 </time>
                 <h1 className="flex items-center justify-between mt-2 font-heading text-4xl leading-tight lg:text-5xl">
                     {exp.companyName}
@@ -116,7 +113,6 @@ export default async function ProjectsPage({ params }: { params: Params }) {
 
             <div className="mb-7 ">
                 <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">Description</h2>
-                {/* {<exp.descriptionComponent />} */}
                 <ProjectsDescription paragraphs={exp.descriptionDetails.paragraphs} bullets={exp.descriptionDetails.bullets} />
             </div>
 
@@ -147,3 +143,4 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         </article>
     );
 }
+

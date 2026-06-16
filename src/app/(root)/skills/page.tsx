@@ -9,8 +9,10 @@ export const metadata: Metadata = {
     description: "View my technical skills and proficiencies.",
 };
 
+import { skillsInterface } from "@/components/config/skills";
+
 export default async function SkillsPage() {
-    let skills = [];
+    let skills: skillsInterface[] = [];
     let error = null;
 
     try {

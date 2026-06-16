@@ -1,31 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    output: "export",
     images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "i.imgur.com",
-            },
-            {
-                protocol: "https",
-                hostname: "lh3.googleusercontent.com",
-            },
-            {
-                protocol: "https",
-                hostname: "res.cloudinary.com",
-            },
-            {
-                protocol: "http",
-                hostname: "res.cloudinary.com",
-            },
-            {
-                protocol: "https",
-                hostname: "avatars.githubusercontent.com",
-                pathname: "/u/**",
-            },
-        ],
+        unoptimized: true,
     },
+    transpilePackages: ["react-icons"],
 };
 
 export default nextConfig;

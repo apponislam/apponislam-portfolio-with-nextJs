@@ -2,9 +2,10 @@ import React from "react";
 
 import SkillsCard from "@/components/skills-card";
 import { getSkills } from "./actions/skill-actions";
+import { skillsInterface } from "./config/skills";
 
 const HomeSkills = async () => {
-    let featuredSkills = [];
+    let featuredSkills: skillsInterface[] = [];
 
     try {
         const skills = await getSkills();

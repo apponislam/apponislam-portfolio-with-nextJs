@@ -3,28 +3,19 @@ import PageHeader from "@/components/page-header";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import React from "react";
-// import { Projects } from "@/components/config/projects";
 import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsInterface } from "@/components/config/projects";
-
-export const metadata: Metadata = {
-    title: "Projects",
-    description: "Examples of cards built using the components.",
-};
+import { getProjects } from "@/components/actions/project-actions";
 
 function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
     return <div className={cn("flex items-center justify-center mb-4 md:mb-0 [&>div]:w-full ", className)} {...props} />;
 }
 
-async function getProjects() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/project`, {
-        next: { revalidate: 2 },
-    });
-    if (!res.ok) throw new Error("Failed to fetch projects");
-    const response = await res.json();
-    return response.data; // Extract the array from the response
-}
+export const metadata: Metadata = {
+    title: "Projects",
+    description: "Examples of cards built using the components.",
+};
 
 const renderContent = async (tabVal: string) => {
     // let expArr = Projects;

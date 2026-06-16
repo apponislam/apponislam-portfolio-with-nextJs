@@ -1,0 +1,136 @@
+export interface Skill {
+    _id: string;
+    name: string;
+    description: string;
+    rating: number;
+    icon: string;
+}
+
+export const skillsData: Skill[] = [
+    {
+        _id: "1",
+        name: "React",
+        description: "Craft interactive user interfaces using components, state, props, and virtual DOM.",
+        rating: 5,
+        icon: "react",
+    },
+    {
+        _id: "2",
+        name: "Next.js",
+        description: "Effortlessly build dynamic apps with routing, layouts, loading UI, and API routes.",
+        rating: 5,
+        icon: "nextjs",
+    },
+    {
+        _id: "3",
+        name: "TypeScript",
+        description: "Enhance JavaScript with static types, making code more understandable and reliable.",
+        rating: 5,
+        icon: "typescript",
+    },
+    {
+        _id: "4",
+        name: "Node.js",
+        description: "Run JavaScript on the server side, enabling dynamic and responsive applications.",
+        rating: 5,
+        icon: "nodejs",
+    },
+    {
+        _id: "5",
+        name: "MongoDB",
+        description: "Store and retrieve data seamlessly with a flexible and scalable NoSQL database.",
+        rating: 5,
+        icon: "mongodb",
+    },
+    {
+        _id: "6",
+        name: "PostgreSQL",
+        description: "Reliable and powerful open-source relational database system with advanced SQL capabilities.",
+        rating: 5,
+        icon: "postgresql",
+    },
+    {
+        _id: "7",
+        name: "JavaScript",
+        description: "Create interactive and dynamic web experiences with the versatile scripting language.",
+        rating: 5,
+        icon: "javascript",
+    },
+    {
+        _id: "8",
+        name: "Express.js",
+        description: "Build web applications and APIs quickly using a fast, unopinionated Node.js framework.",
+        rating: 5,
+        icon: "expressjs",
+    },
+    {
+        _id: "9",
+        name: "Redux",
+        description: "Manage app state effectively using a predictable and centralized state container.",
+        rating: 5,
+        icon: "redux",
+    },
+    {
+        _id: "10",
+        name: "Tailwind CSS",
+        description: "Design beautiful, modern websites faster with a utility-first CSS framework.",
+        rating: 5,
+        icon: "tailwindcss",
+    },
+    {
+        _id: "11",
+        name: "Bootstrap",
+        description: "Quickly create responsive and appealing web designs using a popular CSS framework.",
+        rating: 5,
+        icon: "bootstrap",
+    },
+    {
+        _id: "12",
+        name: "HTML 5",
+        description: "Structure web content beautifully with the latest version of HyperText Markup Language.",
+        rating: 5,
+        icon: "html5",
+    },
+    {
+        _id: "13",
+        name: "CSS 3",
+        description: "Style web pages creatively with the latest iteration of Cascading Style Sheets.",
+        rating: 5,
+        icon: "css3",
+    },
+    {
+        _id: "14",
+        name: "Material UI",
+        description: "Create stunning and responsive UIs with a popular React UI framework.",
+        rating: 5,
+        icon: "mui",
+    },
+    {
+        _id: "15",
+        name: "React Native",
+        description: "Develop cross-platform mobile apps using React for consistent and engaging experiences.",
+        rating: 3,
+        icon: "reactnative",
+    },
+    {
+        _id: "16",
+        name: "MySQL",
+        description: "Manage and organize relational databases efficiently for data-driven applications.",
+        rating: 5,
+        icon: "mysql",
+    },
+    {
+        _id: "17",
+        name: "Netlify",
+        description: "Deploy and manage modern web projects with a powerful all-in-one platform.",
+        rating: 5,
+        icon: "netlify",
+    },
+    {
+        _id: "18",
+        name: "GraphQL",
+        description: "Fetch data precisely with a powerful query language for APIs and runtime execution.",
+        rating: 2,
+        icon: "graphql",
+    },
+];

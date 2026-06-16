@@ -11,8 +11,8 @@ interface ISkills {
     description: string;
     rating: number;
     icon: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 interface SkillsCardProps {
