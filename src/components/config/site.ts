@@ -7,4 +7,6 @@ export const siteConfig: any = {
         twitter: "https://twitter.com/appon2003",
         github: "https://github.com/apponislam",
     },
+    showStatus: true,
+    statusText: "Open to Work",
 };
