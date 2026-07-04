@@ -32,4 +32,8 @@ export const pagesConfig: PagesConfig = {
         title: "Register",
         description: "Create a new account and join the platform.",
     },
+    resume: {
+        title: "Education & Experience",
+        description: "My academic path and professional developer journey.",
+    },
 };

@@ -4,4 +4,4 @@ export type ValidCategory = "Full Stack" | "Frontend" | "Backend" | "Web Dev";
 
 export type ValidExpType = "Personal Project" | "Professional";
 
-export type ValidPages = "skills" | "projects" | "contact" | "blog" | "login" | "register";
+export type ValidPages = "skills" | "projects" | "contact" | "blog" | "login" | "register" | "resume";

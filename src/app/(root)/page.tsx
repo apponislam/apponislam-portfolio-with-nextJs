@@ -8,6 +8,7 @@ import ScrollButton from "@/components/ScrollButton";
 import { pagesConfig } from "@/components/config/pages";
 import HomeSkills from "@/components/Home-skills";
 import { FeaturedProjects } from "@/components/featured-projects";
+import { ResumeSection } from "@/components/resume-section";
 
 export default function Home() {
     return (
@@ -75,6 +76,8 @@ export default function Home() {
                         </Button>
                     </Link>
                 </section>
+
+                <ResumeSection />
 
                 <FeaturedProjects />
             </div>
