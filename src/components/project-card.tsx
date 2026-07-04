@@ -10,6 +10,7 @@ import { Badge } from "./ui/badge";
 import aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { optimizeCloudinaryUrl } from "@/lib/utils";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
@@ -23,7 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     return (
         <div className="relative p-6 max-w-sm bg-white border border-gray-200 rounded-lg  dark:bg-transparent dark:border-gray-700" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <div className="relative w-full h-[200px]">
-                <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src={project.companyLogoImg} alt="img" fill />
+                <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src={optimizeCloudinaryUrl(project.companyLogoImg, 600)} alt="img" fill />
                 {/* <Image className="rounded-lg border border-gray-200  dark:border-gray-700 object-cover" src="https://i.imgur.com/dVdYArw.jpeg" alt="img" fill /> */}
             </div>
             <div className="pt-5 space-y-3">

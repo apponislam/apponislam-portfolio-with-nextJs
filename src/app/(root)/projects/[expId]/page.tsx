@@ -4,7 +4,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatDate, optimizeCloudinaryUrl } from "@/lib/utils";
 import apponislam from "../../../../../public/apponislam.png";
 import ChipContainer from "@/components/chip-container";
 import CustomTooltip from "@/components/custom-tooltips";
@@ -104,7 +104,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 </div>
             </div>
 
-            <Image src={exp.companyLogoImg} alt={exp.companyName} width={720} height={405} className="my-8 rounded-md border bg-muted transition-colors" priority />
+            <Image src={optimizeCloudinaryUrl(exp.companyLogoImg, 1000)} alt={exp.companyName} width={720} height={405} className="my-8 rounded-md border bg-muted transition-colors" priority />
 
             <div className="mb-7 ">
                 <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">Tech Stack</h2>
@@ -126,7 +126,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                         <div>
                             <p>{page.description}</p>
                             {page.imgArr.map((img, ind) => (
-                                <Image src={img} key={ind} alt={img} width={720} height={405} className="my-4 rounded-md border bg-muted transition-colors" priority />
+                                <Image src={optimizeCloudinaryUrl(img, 1000)} key={ind} alt={img} width={720} height={405} className="my-4 rounded-md border bg-muted transition-colors" />
                             ))}
                         </div>
                     </div>

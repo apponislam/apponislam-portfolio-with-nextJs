@@ -22,3 +22,15 @@ export function formatDateFromObj(input: Date): string {
         year: "numeric",
     });
 }
+
+export function optimizeCloudinaryUrl(url: string, width?: number): string {
+    if (!url || !url.includes("res.cloudinary.com")) return url;
+    
+    // If the URL already has transformations, return as is
+    if (url.includes("/image/upload/q_") || url.includes("/image/upload/w_") || url.includes("/image/upload/f_")) {
+        return url;
+    }
+    
+    const transformation = `q_auto,f_auto${width ? `,w_${width}` : ""}`;
+    return url.replace("/image/upload/", `/image/upload/${transformation}/`);
+}
