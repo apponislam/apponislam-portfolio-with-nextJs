@@ -1,5 +1,5 @@
 import Image from "next/image";
-import apponislam from "../../../public/apponislam.png";
+import apponislam from "../../../public/appon.png";
 import { Button, buttonVariants } from "../../components/ui/button";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
