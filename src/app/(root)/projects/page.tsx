@@ -7,6 +7,7 @@ import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsInterface } from "@/components/config/projects";
 import { getProjects } from "@/components/actions/project-actions";
+import { Icons } from "@/components/icons";
 
 function ProjectContainer({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
     return <div className={cn("flex items-center justify-center mb-4 md:mb-0 [&>div]:w-full ", className)} {...props} />;
@@ -28,6 +29,16 @@ const renderContent = async (tabVal: string) => {
         expArr = expArr.filter((val) => val.type === "Personal Project");
     } else if (tabVal === "professional") {
         expArr = expArr.filter((val) => val.type === "Professional");
+    }
+
+    if (expArr.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
+                <Icons.warning className="h-10 w-10 text-muted-foreground/60 mb-3" />
+                <p className="text-lg font-medium text-foreground">No projects found</p>
+                <p className="text-sm text-muted-foreground mt-1">There are no projects listed under this category at the moment.</p>
+            </div>
+        );
     }
 
     return (
