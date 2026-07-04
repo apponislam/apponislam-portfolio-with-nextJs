@@ -56,11 +56,7 @@ export function PremiumFooter({ className }: React.HTMLAttributes<HTMLElement>) 
                 {/* Bottom Bar: Copyright and Credits */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-muted-foreground">
                     <p>© {currentYear} Appon Islam. All rights reserved.</p>
-                    <p className="flex items-center gap-1.5">
-                        Built with 
-                        <span className="text-red-500 animate-pulse">❤️</span> 
-                        using Next.js, TypeScript & Tailwind CSS
-                    </p>
+                    <p>Designed & Developed by Appon Islam</p>
                 </div>
             </div>
         </footer>
