@@ -2,7 +2,7 @@ import { getMainNav } from "@/components/config/routes";
 import { MainNav } from "@/components/main-nav";
 // import { ModeToggle } from "@/components/mode-toggle";
 import NavRightMenu from "@/components/nav-right-menu";
-import { SiteFooter } from "@/components/site-footer";
+import { PremiumFooter } from "@/components/premium-footer";
 
 export default async function MarketingLayout({ children }: { children: React.ReactNode }) {
     const mainNav = await getMainNav();
@@ -20,7 +20,7 @@ export default async function MarketingLayout({ children }: { children: React.Re
                     </div>
                 </header>
                 {children}
-                <SiteFooter></SiteFooter>
+                <PremiumFooter />
             </div>
         </div>
     );
