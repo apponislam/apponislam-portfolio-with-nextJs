@@ -39,9 +39,9 @@ export const educationData: ResumeItem[] = [
     {
         id: "edu-1",
         title: "B.Sc. in Computer Science & Engineering",
-        organization: "Dhaka Institute of Technology / University",
+        organization: "Northern University Bangladesh",
         location: "Dhaka, Bangladesh",
-        duration: "2024 - Present",
+        duration: "2025 - Present",
         description: [
             "Pursuing a Bachelor of Science degree in Computer Science and Engineering.",
             "Acquiring advanced knowledge in Algorithms, Software Architecture, System Design, and Database Systems."
