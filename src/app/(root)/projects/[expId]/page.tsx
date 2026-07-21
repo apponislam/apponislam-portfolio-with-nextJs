@@ -12,6 +12,7 @@ import ProjectsDescription from "@/components/exp-desc";
 import { Projects, ProjectsInterface } from "@/components/config/projects";
 import { Metadata } from "next";
 import ProjectLinksDropdown from "@/components/project-links-dropdown";
+import ProjectImageSlider from "@/components/project-image-slider";
 
 type Props = {
     params: Promise<{ expId: string }>;
@@ -93,7 +94,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 </div>
             </div>
 
-            <Image src={optimizeCloudinaryUrl(exp.companyLogoImg, 1000)} alt={exp.companyName} width={720} height={405} className="my-8 rounded-md border bg-muted transition-colors w-full" priority />
+            <ProjectImageSlider images={exp.images} companyName={exp.companyName} />
 
             <div className="mb-7 ">
                 <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">Tech Stack</h2>
@@ -108,16 +109,11 @@ export default async function ProjectsPage({ params }: { params: Params }) {
             <div className="mb-7 ">
                 <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-5">Page Info</h2>
                 {exp.pagesInfoArr.map((page, ind) => (
-                    <div key={ind}>
+                    <div key={ind} className="mb-6">
                         <h3 className="flex items-center font-heading text-xl leading-tight lg:text-xl mt-3">
                             <Icons.star className="h-5 w-5 mr-2" /> {page.title}
                         </h3>
-                        <div>
-                            <p>{page.description}</p>
-                            {page.imgArr.map((img, ind) => (
-                                <Image src={optimizeCloudinaryUrl(img, 1000)} key={ind} alt={img} width={720} height={405} className="my-4 rounded-md border bg-muted transition-colors w-full" />
-                            ))}
-                        </div>
+                        <p className="text-muted-foreground mt-1">{page.description}</p>
                     </div>
                 ))}
             </div>

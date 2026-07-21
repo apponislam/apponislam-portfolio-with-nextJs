@@ -15,13 +15,13 @@ export interface Project {
     startDate: string;
     endDate: string;
     companyLogoImg: string;
+    images: string[];
     descriptionDetails: {
         paragraphs: string[];
         bullets: string[];
     };
     pagesInfoArr: Array<{
         title: string;
-        imgArr: string[];
         description: string;
     }>;
 }
@@ -44,6 +44,12 @@ export const projectsData: Project[] = [
         startDate: "2025-03-10",
         endDate: "2025-05-01",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945636/uljmooa6wwmk8nyxoya1.png",
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png"
+        ],
         descriptionDetails: {
             paragraphs: [
                 "Sustainability Idea Hub is a web application where users can submit, discuss, and vote on eco-friendly ideas. Members can categorize ideas, comment with nested threads, and interact through a Reddit-style voting system.",
@@ -54,22 +60,18 @@ export const projectsData: Project[] = [
         pagesInfoArr: [
             {
                 title: "Home Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png"],
                 description: "Features hero section, search bar, idea highlights, and testimonials.",
             },
             {
                 title: "Member Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png"],
                 description: "Members can manage their own ideas, edit drafts, and track approval statuses.",
             },
             {
                 title: "Admin Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png"],
                 description: "Admins manage users, approve/reject ideas, and moderate comments.",
             },
             {
                 title: "Idea Details Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png"],
                 description: "Shows full idea content, voting buttons, paid access logic, and nested comments.",
             },
         ],
@@ -86,6 +88,14 @@ export const projectsData: Project[] = [
         startDate: "2025-04-01",
         endDate: "2025-06-10",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945838/iihrwdulbus4qb2gel5v.png",
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945841/rgp4xeabeuvswee7imac.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945864/hayfdpeujq8d4gkryzct.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945888/avgeqomzudclaycntwud.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945910/vclcacoupuket5xv5nom.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945987/dctqfpcag7sxnpxnt3bi.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750946015/ghizuld8wtalp8x6dscp.png"
+        ],
         descriptionDetails: {
             paragraphs: ["Bike Shop is an online platform that allows customers to browse, search, and filter bikes with ease. Authenticated users can place orders, track status, and manage their profiles securely.", "Admins can manage all users, orders, and product listings with complete control from their dedicated dashboard. SurjoPay is integrated for secure payment transactions."],
             bullets: ["JWT-based role authentication for customers and admins", "Dynamic search, filters, and product detail pages", "SurjoPay integration for secure checkout", "Admin dashboard for user, product, and order management", "Track orders with real-time status updates"],
@@ -93,32 +103,26 @@ export const projectsData: Project[] = [
         pagesInfoArr: [
             {
                 title: "Home Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945841/rgp4xeabeuvswee7imac.png"],
                 description: "Includes banner, featured bikes, call-to-actions, testimonials, and a stylish footer.",
             },
             {
                 title: "All Products Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945864/hayfdpeujq8d4gkryzct.png"],
                 description: "Displays all bikes with filters (brand, model, category, availability, price) and a search bar.",
             },
             {
                 title: "Product Details Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945888/avgeqomzudclaycntwud.png"],
                 description: "Shows bike images, specifications, pricing, and Buy Now option.",
             },
             {
                 title: "Checkout Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945910/vclcacoupuket5xv5nom.png"],
                 description: "Collects order details and processes payment via SurjoPay.",
             },
             {
                 title: "Admin Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945987/dctqfpcag7sxnpxnt3bi.png"],
                 description: "Admins can manage users, products, and orders. Includes order status update and stock control.",
             },
             {
                 title: "User Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750946015/ghizuld8wtalp8x6dscp.png"],
                 description: "Users can view their orders, update profile info, and track deliveries.",
             },
         ],
@@ -135,6 +139,14 @@ export const projectsData: Project[] = [
         startDate: "2025-05-15",
         endDate: "2025-06-26",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750942876/alwzdx9qsdzhzneplt6g.png",
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750942876/alwzdx9qsdzhzneplt6g.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943047/gfyr0aun4kpxmgepge47.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943494/k1rvltakhcyboljsrawu.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943436/di4hflf7ii8f33jvt5fs.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943466/dyub7fc2zrdb6do2vfxt.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943151/y7zqotr9wmeli7zsa1lf.png"
+        ],
         descriptionDetails: {
             paragraphs: [
                 "EduManage streamlines class management by connecting institutions, tutors, and students on a single, responsive platform. Users register securely, browse approved classes, and enroll using SurjoPay-powered checkout.",
@@ -156,32 +168,26 @@ export const projectsData: Project[] = [
         pagesInfoArr: [
             {
                 title: "Home Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750942876/alwzdx9qsdzhzneplt6g.png"],
                 description: "Banner carousel, partner logos, popular classes slider, user & class stats, teacher recruitment CTA, and feedback carousel.",
             },
             {
                 title: "All Classes Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943047/gfyr0aun4kpxmgepge47.png"],
                 description: "Search and filter classes by category, price, brand, model, and availability with infinite scroll.",
             },
             {
                 title: "Class Details / Checkout",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943494/k1rvltakhcyboljsrawu.png"],
                 description: "Shows full class info, Pay Now button, and redirects to SurjoPay gateway.",
             },
             {
                 title: "Teacher Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943436/di4hflf7ii8f33jvt5fs.png"],
                 description: "Add classes, update/delete listings, view class progress, create assignments, and monitor enrollment stats.",
             },
             {
                 title: "Student Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943466/dyub7fc2zrdb6do2vfxt.png"],
                 description: "View enrolled classes, submit assignments, post TER feedback, track orders, and manage profile.",
             },
             {
                 title: "Admin Dashboard",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943151/y7zqotr9wmeli7zsa1lf.png"],
                 description: "Approve or reject teacher requests and classes, manage users and roles, oversee orders, and view class feedback.",
             },
         ],
@@ -198,6 +204,14 @@ export const projectsData: Project[] = [
         startDate: "2025-06-10",
         endDate: "2025-06-26",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943676/btd2rfqpojdayjpuug2q.png",
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943676/btd2rfqpojdayjpuug2q.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959049/rwfagwqiqehoaxfpd596.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959055/jcyozxekp7btgahvey65.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959062/nb8rvtdiirfea4syw1pi.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959084/cdgzpcmj8ouelt3jt8qk.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959086/atoigwjnipll8jh0d99e.png"
+        ],
         descriptionDetails: {
             paragraphs: [
                 "GroupStudy Hub is a MERN stack web app for students to collaboratively create, take, and evaluate assignments. Each user can post new assignments, attempt others', and grade pending submissions from friends. The system supports file-based submissions, grading workflows, and personalized dashboards.",
@@ -219,32 +233,26 @@ export const projectsData: Project[] = [
         pagesInfoArr: [
             {
                 title: "Home Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943676/btd2rfqpojdayjpuug2q.png"],
                 description: "Features a banner, navbar with conditional rendering, a features section with cards, an FAQ section, and a footer with copyright.",
             },
             {
                 title: "Create Assignment Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959049/rwfagwqiqehoaxfpd596.png"],
                 description: "Private page for posting new assignments with fields for title, marks, description, level, image URL, and due date (using react-datepicker).",
             },
             {
                 title: "Assignments Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959055/jcyozxekp7btgahvey65.png"],
                 description: "Lists all assignments with filter by difficulty level. Users can view, update, or delete (if creator).",
             },
             {
                 title: "Assignment Details Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959062/nb8rvtdiirfea4syw1pi.png"],
                 description: "Private dynamic route with assignment info and a modal to submit assignment via PDF link and notes.",
             },
             {
                 title: "Pending Assignments Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959084/cdgzpcmj8ouelt3jt8qk.png"],
                 description: "Lists all ungraded submissions. Users can mark submissions by giving feedback and marks.",
             },
             {
                 title: "Login & Register",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959086/atoigwjnipll8jh0d99e.png"],
                 description: "Firebase auth with Email/Password and Google. Includes client-side validation, error toasts, and token storage.",
             },
         ],
@@ -261,6 +269,13 @@ export const projectsData: Project[] = [
         startDate: "2025-06-12",
         endDate: "2025-06-26",
         companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959177/q5uqgngk8eubzpk0nwe3.png",
+        images: [
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959171/wninbrdrznaha0zigbf6.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959201/napz9rqmkh7a4pdikrrm.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959208/tw4rrpapdelf0t8s32wl.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959238/kbjmhli2oryjvsp8hgqh.png",
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959256/mxtpijllql1uym6yakqo.png"
+        ],
         descriptionDetails: {
             paragraphs: ["CraftNest lets artists and buyers connect over unique jute and wooden crafts. Users can securely add, update, and manage their own products, while visitors explore curated items by sub-category.", "The site features JWT-protected routes, Google/Firebase authentication, TanStack-Query data fetching, and dark/light theme switching for an engaging shopping experience."],
             bullets: ["Private dashboards for adding, updating, and deleting crafts", "Category & sub-category filtering with responsive UI", "Form validation and toast notifications for all CRUD actions", "Dark / light theme toggle and Lottie animations on the home page", "Fully environment-secured Firebase & MongoDB credentials"],
@@ -268,27 +283,22 @@ export const projectsData: Project[] = [
         pagesInfoArr: [
             {
                 title: "Home Page",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959171/wninbrdrznaha0zigbf6.png"],
                 description: "Banner slider, craft highlights, six sub-category cards, extra feature sections, and theme toggle.",
             },
             {
                 title: "All Craft Items",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959201/napz9rqmkh7a4pdikrrm.png"],
                 description: "Table view of every craft in the database with View-Details links.",
             },
             {
                 title: "Add Craft Item",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959208/tw4rrpapdelf0t8s32wl.png"],
                 description: "Protected form for posting new crafts (image URL, name, price, rating, stock, etc.).",
             },
             {
                 title: "My Craft List",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959238/kbjmhli2oryjvsp8hgqh.png"],
                 description: "Shows only the logged-in user's crafts with update & delete controls and customization filter.",
             },
             {
                 title: "Craft Details",
-                imgArr: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959256/mxtpijllql1uym6yakqo.png"],
                 description: "Private dynamic route displaying full details of a craft item.",
             },
         ],
