@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Icons } from "./icons";
 import { cn, optimizeCloudinaryUrl } from "@/lib/utils";
@@ -14,6 +14,16 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
+
+    useEffect(() => {
+        if (images.length <= 1) return;
+
+        const timer = setTimeout(() => {
+            setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [currentIndex, images.length]);
 
     if (!images || images.length === 0) return null;
 

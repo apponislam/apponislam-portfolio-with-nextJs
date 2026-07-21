@@ -106,17 +106,15 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 <ProjectsDescription paragraphs={exp.descriptionDetails.paragraphs} bullets={exp.descriptionDetails.bullets} />
             </div>
 
-            <div className="mb-7 ">
-                <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-5">Page Info</h2>
-                {exp.pagesInfoArr.map((page, ind) => (
-                    <div key={ind} className="mb-6">
-                        <h3 className="flex items-center font-heading text-xl leading-tight lg:text-xl mt-3">
-                            <Icons.star className="h-5 w-5 mr-2" /> {page.title}
-                        </h3>
-                        <p className="text-muted-foreground mt-1">{page.description}</p>
+            {exp.warning && (
+                <div className="my-6 p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-start gap-3 text-sm animate-in fade-in duration-200">
+                    <Icons.warning className="h-5 w-5 shrink-0 mt-0.5" />
+                    <div>
+                        <span className="font-bold block mb-0.5">Warning / Note</span>
+                        <p className="leading-relaxed">{exp.warning}</p>
                     </div>
-                ))}
-            </div>
+                </div>
+            )}
 
             <hr className="mt-12" />
             <div className="flex justify-center py-6 lg:py-10">

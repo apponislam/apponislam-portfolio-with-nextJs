@@ -20,10 +20,7 @@ export interface Project {
         paragraphs: string[];
         bullets: string[];
     };
-    pagesInfoArr: Array<{
-        title: string;
-        description: string;
-    }>;
+    warning?: string;
 }
 
 export const projectsData: Project[] = [
@@ -57,24 +54,7 @@ export const projectsData: Project[] = [
             ],
             bullets: ["JWT-based authentication and role management (Member/Admin)", "Paid/free idea visibility control with SSLCommerz integration", "Nested commenting and voting system like Reddit", "Admin approval/rejection with feedback mechanism", "Search and filter ideas by keyword or category"],
         },
-        pagesInfoArr: [
-            {
-                title: "Home Page",
-                description: "Features hero section, search bar, idea highlights, and testimonials.",
-            },
-            {
-                title: "Member Dashboard",
-                description: "Members can manage their own ideas, edit drafts, and track approval statuses.",
-            },
-            {
-                title: "Admin Dashboard",
-                description: "Admins manage users, approve/reject ideas, and moderate comments.",
-            },
-            {
-                title: "Idea Details Page",
-                description: "Shows full idea content, voting buttons, paid access logic, and nested comments.",
-            },
-        ],
+        warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
     },
     {
         _id: "2",
@@ -100,32 +80,6 @@ export const projectsData: Project[] = [
             paragraphs: ["Bike Shop is an online platform that allows customers to browse, search, and filter bikes with ease. Authenticated users can place orders, track status, and manage their profiles securely.", "Admins can manage all users, orders, and product listings with complete control from their dedicated dashboard. SurjoPay is integrated for secure payment transactions."],
             bullets: ["JWT-based role authentication for customers and admins", "Dynamic search, filters, and product detail pages", "SurjoPay integration for secure checkout", "Admin dashboard for user, product, and order management", "Track orders with real-time status updates"],
         },
-        pagesInfoArr: [
-            {
-                title: "Home Page",
-                description: "Includes banner, featured bikes, call-to-actions, testimonials, and a stylish footer.",
-            },
-            {
-                title: "All Products Page",
-                description: "Displays all bikes with filters (brand, model, category, availability, price) and a search bar.",
-            },
-            {
-                title: "Product Details Page",
-                description: "Shows bike images, specifications, pricing, and Buy Now option.",
-            },
-            {
-                title: "Checkout Page",
-                description: "Collects order details and processes payment via SurjoPay.",
-            },
-            {
-                title: "Admin Dashboard",
-                description: "Admins can manage users, products, and orders. Includes order status update and stock control.",
-            },
-            {
-                title: "User Dashboard",
-                description: "Users can view their orders, update profile info, and track deliveries.",
-            },
-        ],
     },
     {
         _id: "3",
@@ -165,32 +119,6 @@ export const projectsData: Project[] = [
                 "Environment-secured MongoDB & Firebase credentials",
             ],
         },
-        pagesInfoArr: [
-            {
-                title: "Home Page",
-                description: "Banner carousel, partner logos, popular classes slider, user & class stats, teacher recruitment CTA, and feedback carousel.",
-            },
-            {
-                title: "All Classes Page",
-                description: "Search and filter classes by category, price, brand, model, and availability with infinite scroll.",
-            },
-            {
-                title: "Class Details / Checkout",
-                description: "Shows full class info, Pay Now button, and redirects to SurjoPay gateway.",
-            },
-            {
-                title: "Teacher Dashboard",
-                description: "Add classes, update/delete listings, view class progress, create assignments, and monitor enrollment stats.",
-            },
-            {
-                title: "Student Dashboard",
-                description: "View enrolled classes, submit assignments, post TER feedback, track orders, and manage profile.",
-            },
-            {
-                title: "Admin Dashboard",
-                description: "Approve or reject teacher requests and classes, manage users and roles, oversee orders, and view class feedback.",
-            },
-        ],
     },
     {
         _id: "4",
@@ -230,32 +158,6 @@ export const projectsData: Project[] = [
                 "Responsive design for desktop, tablet, and mobile devices",
             ],
         },
-        pagesInfoArr: [
-            {
-                title: "Home Page",
-                description: "Features a banner, navbar with conditional rendering, a features section with cards, an FAQ section, and a footer with copyright.",
-            },
-            {
-                title: "Create Assignment Page",
-                description: "Private page for posting new assignments with fields for title, marks, description, level, image URL, and due date (using react-datepicker).",
-            },
-            {
-                title: "Assignments Page",
-                description: "Lists all assignments with filter by difficulty level. Users can view, update, or delete (if creator).",
-            },
-            {
-                title: "Assignment Details Page",
-                description: "Private dynamic route with assignment info and a modal to submit assignment via PDF link and notes.",
-            },
-            {
-                title: "Pending Assignments Page",
-                description: "Lists all ungraded submissions. Users can mark submissions by giving feedback and marks.",
-            },
-            {
-                title: "Login & Register",
-                description: "Firebase auth with Email/Password and Google. Includes client-side validation, error toasts, and token storage.",
-            },
-        ],
     },
     {
         _id: "5",
@@ -280,27 +182,5 @@ export const projectsData: Project[] = [
             paragraphs: ["CraftNest lets artists and buyers connect over unique jute and wooden crafts. Users can securely add, update, and manage their own products, while visitors explore curated items by sub-category.", "The site features JWT-protected routes, Google/Firebase authentication, TanStack-Query data fetching, and dark/light theme switching for an engaging shopping experience."],
             bullets: ["Private dashboards for adding, updating, and deleting crafts", "Category & sub-category filtering with responsive UI", "Form validation and toast notifications for all CRUD actions", "Dark / light theme toggle and Lottie animations on the home page", "Fully environment-secured Firebase & MongoDB credentials"],
         },
-        pagesInfoArr: [
-            {
-                title: "Home Page",
-                description: "Banner slider, craft highlights, six sub-category cards, extra feature sections, and theme toggle.",
-            },
-            {
-                title: "All Craft Items",
-                description: "Table view of every craft in the database with View-Details links.",
-            },
-            {
-                title: "Add Craft Item",
-                description: "Protected form for posting new crafts (image URL, name, price, rating, stock, etc.).",
-            },
-            {
-                title: "My Craft List",
-                description: "Shows only the logged-in user's crafts with update & delete controls and customization filter.",
-            },
-            {
-                title: "Craft Details",
-                description: "Private dynamic route displaying full details of a craft item.",
-            },
-        ],
     },
 ];
