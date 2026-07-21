@@ -115,7 +115,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                         <div>
                             <p>{page.description}</p>
                             {page.imgArr.map((img, ind) => (
-                                <Image src={optimizeCloudinaryUrl(img, 1000)} key={ind} alt={img} width={720} height={405} className="my-4 rounded-md border bg-muted transition-colors" />
+                                <Image src={optimizeCloudinaryUrl(img, 1000)} key={ind} alt={img} width={720} height={405} className="my-4 rounded-md border bg-muted transition-colors w-full" />
                             ))}
                         </div>
                     </div>
