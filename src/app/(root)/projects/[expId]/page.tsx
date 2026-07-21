@@ -11,6 +11,7 @@ import CustomTooltip from "@/components/custom-tooltips";
 import ProjectsDescription from "@/components/exp-desc";
 import { Projects, ProjectsInterface } from "@/components/config/projects";
 import { Metadata } from "next";
+import ProjectLinksDropdown from "@/components/project-links-dropdown";
 
 type Props = {
     params: Promise<{ expId: string }>;
@@ -72,30 +73,18 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 <time dateTime={exp.startDate} className="block text-sm text-muted-foreground">
                     {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                 </time>
-                <h1 className="flex items-center justify-between mt-2 font-heading text-4xl leading-tight lg:text-5xl">
-                    {exp.companyName}
-                    <div className="flex items-center">
-                        {exp.githubLink && (
-                            <CustomTooltip text="Link to the source code.">
-                                <Link href={exp.githubLink} target="_blank">
-                                    <Icons.gitHub className="w-6 ml-4 text-muted-foreground hover:text-foreground" />
-                                </Link>
-                            </CustomTooltip>
-                        )}
-                        {exp.websiteLink && (
-                            <CustomTooltip text="Please note that some project links may be temporarily unavailable.">
-                                <Link href={exp.websiteLink} target="_blank">
-                                    <Icons.externalLink className="w-6 ml-4 text-muted-foreground hover:text-foreground " />
-                                </Link>
-                            </CustomTooltip>
-                        )}
-                    </div>
-                </h1>
-                <ChipContainer textArr={exp.category} />
-                <div className="mt-4 flex space-x-4">
+                <div className="flex flex-wrap items-center justify-between gap-4 mt-2">
+                    <h1 className="font-heading text-4xl leading-tight lg:text-5xl">{exp.companyName}</h1>
+                    <ProjectLinksDropdown project={exp} />
+                </div>
+
+                <div className="mt-4">
+                    <ChipContainer textArr={exp.category} />
+                </div>
+
+                <div className="mt-5 flex space-x-4 border-t border-muted pt-4">
                     <Link href={`https://github.com/${githubUsername}`} className="flex items-center space-x-2 text-sm">
                         <Image src={apponislam} alt={"Appon"} width={42} height={42} className="rounded-full bg-white" />
-
                         <div className="flex-1 text-left leading-tight">
                             <p className="font-medium">{"Appon Islam"}</p>
                             <p className="text-[12px] text-muted-foreground">@{githubUsername}</p>
@@ -104,7 +93,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
                 </div>
             </div>
 
-            <Image src={optimizeCloudinaryUrl(exp.companyLogoImg, 1000)} alt={exp.companyName} width={720} height={405} className="my-8 rounded-md border bg-muted transition-colors" priority />
+            <Image src={optimizeCloudinaryUrl(exp.companyLogoImg, 1000)} alt={exp.companyName} width={720} height={405} className="my-8 rounded-md border bg-muted transition-colors w-full" priority />
 
             <div className="mb-7 ">
                 <h2 className="inline-block font-heading text-3xl leading-tight lg:text-3xl mb-2">Tech Stack</h2>
@@ -143,4 +132,3 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         </article>
     );
 }
-

@@ -4,8 +4,13 @@ export interface Project {
     companyName: string;
     category: string[];
     shortDescription: string;
-    websiteLink: string;
-    githubLink: string;
+    websiteLink?: string;
+    githubLink?: string;
+    githubFrontendLink?: string;
+    githubBackendLink?: string;
+    liveLink?: string;
+    productionLink?: string;
+    appLink?: string;
     techStack: string[];
     startDate: string;
     endDate: string;
@@ -30,6 +35,11 @@ export const projectsData: Project[] = [
         shortDescription: "A full-stack platform for sharing and managing sustainability-focused ideas with role-based access, voting, comments, and paid content system.",
         websiteLink: "https://idea-hub-client.vercel.app/",
         githubLink: "https://github.com/apponislam/idea-hub-client",
+        githubFrontendLink: "https://github.com/apponislam/idea-hub-client",
+        githubBackendLink: "https://github.com/apponislam/idea-hub-server",
+        liveLink: "https://idea-hub-client.vercel.app/",
+        productionLink: "https://idea-hub-client.vercel.app/",
+        appLink: "https://idea-hub-client.vercel.app/",
         techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Express.js", "Typescript", "PostgreSQL", "Prisma", "JWT"],
         startDate: "2025-03-10",
         endDate: "2025-05-01",
