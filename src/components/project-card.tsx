@@ -11,6 +11,7 @@ import aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { optimizeCloudinaryUrl } from "@/lib/utils";
+import CustomTooltip from "./custom-tooltips";
 
 interface ProjectCardProps {
     project: ProjectsInterface;
@@ -47,7 +48,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     </Button>
                 </Link>
             </div>
-            <div className="absolute bottom-4 right-4 dark:border-gray-700 p-3 rounded-full  bg-white border dark:bg-gray-950 border-gray-200 ">{project.type === "Personal Project" ? <Icons.userFill className="h-4 w-4" /> : <Icons.work className="h-4 w-4" />}</div>
+            <div className="absolute bottom-4 right-4">
+                <CustomTooltip text={project.type} icon={project.type === "Personal Project" ? Icons.userFill : Icons.work}>
+                    <div className="dark:border-gray-700 p-3 rounded-full bg-white border dark:bg-gray-950 border-gray-200 cursor-help select-none">
+                        {project.type === "Personal Project" ? <Icons.userFill className="h-4 w-4" /> : <Icons.work className="h-4 w-4" />}
+                    </div>
+                </CustomTooltip>
+            </div>
         </div>
     );
 }
