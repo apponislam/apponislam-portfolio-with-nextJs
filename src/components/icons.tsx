@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
 import { AlertTriangle, ArrowRight, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code } from "lucide-react";
-import { SiAngular, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
+import { SiAngular, SiAntdesign, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
 import { IoIosGitBranch } from "react-icons/io";
 import { TbBrandFiverr } from "react-icons/tb";
 import { FcGoogle } from "react-icons/fc";
@@ -12,6 +12,20 @@ import { CiEdit } from "react-icons/ci";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 
 export const Icons = {
+    sslcommerz: ({ ...props }: LucideProps) => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            <path d="M12 15v3" />
+        </svg>
+    ),
+    antdesign: SiAntdesign,
+    shadcn: ({ ...props }: LucideProps) => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" {...props}>
+            <path d="M208 128a80 80 0 1 1-160 0 80 80 0 0 1 160 0Z" stroke="currentColor" strokeWidth="16" />
+            <path d="M192 40 64 216" stroke="currentColor" strokeWidth="16" strokeLinecap="round" />
+        </svg>
+    ),
     whatsapp: FaWhatsapp,
     globe: Globe,
     smartphone: Smartphone,

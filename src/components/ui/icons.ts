@@ -15,10 +15,14 @@ export const iconMap = {
     reactnative: Icons.react,
     redux: Icons.redux,
     mui: Icons.mui,
+    shadcn: Icons.shadcn,
+    antdesign: Icons.antdesign,
     tailwindcss: Icons.tailwindcss,
     bootstrap: Icons.bootstrap,
     mysql: Icons.mysql,
     netlify: Icons.netlify,
+    socketio: Icons.socketio,
+    sslcommerz: Icons.sslcommerz,
 };
 
 export type IconName = keyof typeof iconMap;
