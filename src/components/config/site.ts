@@ -6,7 +6,11 @@ export const siteConfig: any = {
     links: {
         twitter: "https://twitter.com/appon2003",
         github: "https://github.com/apponislam",
+        linkedin: "https://www.linkedin.com/in/apponislam/",
     },
+    email: "apponislam@gmail.com",
+    phone: "+8801722779803",
+    location: "Dhaka, Bangladesh",
     showStatus: true,
     statusText: "Open to Work",
 };

@@ -1,7 +1,7 @@
 import { BiLaugh, BiLogoPostgresql, BiSolidUser } from "react-icons/bi";
 import { BsInfoCircle, BsQuestionCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
-import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter } from "react-icons/fa";
+import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
 import { AlertTriangle, ArrowRight, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code } from "lucide-react";
 import { SiAngular, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
@@ -12,6 +12,7 @@ import { CiEdit } from "react-icons/ci";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 
 export const Icons = {
+    whatsapp: FaWhatsapp,
     globe: Globe,
     smartphone: Smartphone,
     server: Server,
