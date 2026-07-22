@@ -23,6 +23,7 @@ const renderContent = async (tabVal: string) => {
     // console.log(expArr);
 
     let expArr: ProjectsInterface[] = await getProjects();
+    expArr.sort((a, b) => Number(b._id) - Number(a._id));
     // console.log(expArr);
 
     if (tabVal === "personal") {

@@ -27,38 +27,6 @@ export const projectsData: Project[] = [
     {
         _id: "1",
         type: "Personal Project",
-        companyName: "Sustainability Idea Hub",
-        category: ["Full Stack", "Web Dev"],
-        shortDescription: "A full-stack platform for sharing and managing sustainability-focused ideas with role-based access, voting, comments, and paid content system.",
-        websiteLink: "https://idea-hub-client.vercel.app/",
-        githubLink: "https://github.com/apponislam/idea-hub-client",
-        githubFrontendLink: "https://github.com/apponislam/idea-hub-client",
-        githubBackendLink: "https://github.com/apponislam/idea-hub-server",
-        liveLink: "https://idea-hub-client.vercel.app/",
-        productionLink: "https://idea-hub-client.vercel.app/",
-        appLink: "https://idea-hub-client.vercel.app/",
-        techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Express.js", "Typescript", "PostgreSQL", "Prisma", "JWT"],
-        startDate: "2025-03-10",
-        endDate: "2025-05-01",
-        companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945636/uljmooa6wwmk8nyxoya1.png",
-        images: [
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png"
-        ],
-        descriptionDetails: {
-            paragraphs: [
-                "Sustainability Idea Hub is a web application where users can submit, discuss, and vote on eco-friendly ideas. Members can categorize ideas, comment with nested threads, and interact through a Reddit-style voting system.",
-                "Admins can review submissions, give feedback, and highlight impactful projects. Additionally, members can monetize their ideas by marking them as 'Paid', which requires payment for access.",
-            ],
-            bullets: ["JWT-based authentication and role management (Member/Admin)", "Paid/free idea visibility control with SSLCommerz integration", "Nested commenting and voting system like Reddit", "Admin approval/rejection with feedback mechanism", "Search and filter ideas by keyword or category"],
-        },
-        warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
-    },
-    {
-        _id: "2",
-        type: "Personal Project",
         companyName: "Bike Shop Application",
         category: ["Full Stack", "Web Dev"],
         shortDescription: "A complete bike e-commerce platform with secure JWT-based authentication, role-based dashboards, product filters, and integrated SurjoPay payment system.",
@@ -74,7 +42,7 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945888/avgeqomzudclaycntwud.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945910/vclcacoupuket5xv5nom.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945987/dctqfpcag7sxnpxnt3bi.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750946015/ghizuld8wtalp8x6dscp.png"
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750946015/ghizuld8wtalp8x6dscp.png",
         ],
         descriptionDetails: {
             paragraphs: ["Bike Shop is an online platform that allows customers to browse, search, and filter bikes with ease. Authenticated users can place orders, track status, and manage their profiles securely.", "Admins can manage all users, orders, and product listings with complete control from their dedicated dashboard. SurjoPay is integrated for secure payment transactions."],
@@ -82,7 +50,7 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "3",
+        _id: "2",
         type: "Personal Project",
         companyName: "AP Classroom",
         category: ["Full Stack", "Web Dev"],
@@ -99,7 +67,7 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943494/k1rvltakhcyboljsrawu.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943436/di4hflf7ii8f33jvt5fs.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943466/dyub7fc2zrdb6do2vfxt.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943151/y7zqotr9wmeli7zsa1lf.png"
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750943151/y7zqotr9wmeli7zsa1lf.png",
         ],
         descriptionDetails: {
             paragraphs: [
@@ -121,7 +89,7 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "4",
+        _id: "3",
         type: "Personal Project",
         companyName: "Appon Assignment Library",
         category: ["Full Stack", "Web Dev"],
@@ -138,7 +106,7 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959055/jcyozxekp7btgahvey65.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959062/nb8rvtdiirfea4syw1pi.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959084/cdgzpcmj8ouelt3jt8qk.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959086/atoigwjnipll8jh0d99e.png"
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959086/atoigwjnipll8jh0d99e.png",
         ],
         descriptionDetails: {
             paragraphs: [
@@ -160,7 +128,7 @@ export const projectsData: Project[] = [
         },
     },
     {
-        _id: "5",
+        _id: "4",
         type: "Personal Project",
         companyName: "Appon Painting & Drawing",
         category: ["Full Stack", "Web Dev"],
@@ -176,11 +144,70 @@ export const projectsData: Project[] = [
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959201/napz9rqmkh7a4pdikrrm.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959208/tw4rrpapdelf0t8s32wl.png",
             "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959238/kbjmhli2oryjvsp8hgqh.png",
-            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959256/mxtpijllql1uym6yakqo.png"
+            "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750959256/mxtpijllql1uym6yakqo.png",
         ],
         descriptionDetails: {
             paragraphs: ["CraftNest lets artists and buyers connect over unique jute and wooden crafts. Users can securely add, update, and manage their own products, while visitors explore curated items by sub-category.", "The site features JWT-protected routes, Google/Firebase authentication, TanStack-Query data fetching, and dark/light theme switching for an engaging shopping experience."],
             bullets: ["Private dashboards for adding, updating, and deleting crafts", "Category & sub-category filtering with responsive UI", "Form validation and toast notifications for all CRUD actions", "Dark / light theme toggle and Lottie animations on the home page", "Fully environment-secured Firebase & MongoDB credentials"],
+        },
+    },
+    {
+        _id: "5",
+        type: "Personal Project",
+        companyName: "Sustainability Idea Hub",
+        category: ["Full Stack", "Web Dev"],
+        shortDescription: "A full-stack platform for sharing and managing sustainability-focused ideas with role-based access, voting, comments, and paid content system.",
+        websiteLink: "https://idea-hub-client.vercel.app/",
+        githubLink: "https://github.com/apponislam/idea-hub-client",
+        githubFrontendLink: "https://github.com/apponislam/idea-hub-client",
+        githubBackendLink: "https://github.com/apponislam/idea-hub-server",
+        liveLink: "https://idea-hub-client.vercel.app/",
+        productionLink: "https://idea-hub-client.vercel.app/",
+        appLink: "https://idea-hub-client.vercel.app/",
+        techStack: ["Next.js", "React", "Tailwind CSS", "Node.js", "Express.js", "Typescript", "PostgreSQL", "Prisma", "JWT"],
+        startDate: "2025-03-10",
+        endDate: "2025-05-01",
+        companyLogoImg: "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945636/uljmooa6wwmk8nyxoya1.png",
+        images: ["https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945645/tbvxsx4gd0oxi1zppiou.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945689/vttlmzd2glycl6ej3en2.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945728/otqcoz6fkoaqd4l2ylmy.png", "https://res.cloudinary.com/dqkx3gcnm/image/upload/v1750945760/rnrvbemx7rlvr0hlqo37.png"],
+        descriptionDetails: {
+            paragraphs: [
+                "Sustainability Idea Hub is a web application where users can submit, discuss, and vote on eco-friendly ideas. Members can categorize ideas, comment with nested threads, and interact through a Reddit-style voting system.",
+                "Admins can review submissions, give feedback, and highlight impactful projects. Additionally, members can monetize their ideas by marking them as 'Paid', which requires payment for access.",
+            ],
+            bullets: ["JWT-based authentication and role management (Member/Admin)", "Paid/free idea visibility control with SSLCommerz integration", "Nested commenting and voting system like Reddit", "Admin approval/rejection with feedback mechanism", "Search and filter ideas by keyword or category"],
+        },
+        warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
+    },
+
+    {
+        _id: "6",
+        type: "Professional",
+        companyName: "LetANest - Short-Term Lets & Festival Stays",
+        category: ["Full Stack", "Web Dev"],
+        shortDescription: "LetANest is a premium UK-based festival and short-term accommodation booking platform featuring glamping reservations, Stripe checkouts, and custom Lexical text editor messaging.",
+        websiteLink: "https://letanest.com/",
+        liveLink: "https://letanest.com/",
+        productionLink: "https://letanest.com/",
+        githubFrontendLink: "https://github.com/apponislam/letanest",
+        githubBackendLink: "https://github.com/apponislam/letanest-server",
+        techStack: ["Next.js", "React", "Redux Toolkit", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Stripe", "Lexical Editor", "Socket.io", "Typescript"],
+        startDate: "2025-11-10",
+        endDate: "2026-02-20",
+        companyLogoImg: "/projects/letanest/home.png",
+        images: ["/projects/letanest/home.png", "/projects/letanest/details.png", "/projects/letanest/dashboard.png"],
+        descriptionDetails: {
+            paragraphs: [
+                "LetANest is a full-featured premium event and festival accommodation booking platform operating in the United Kingdom. Designed to streamline short-term rentals during events like the Edinburgh Festival, it offers event-goers a smooth experience for finding, reserving, and paying for glamping setups, bell tents, and event pods.",
+                "The platform incorporates a rich text messaging system built with Lexical Editor for smooth host-guest communication, secure checkout via Stripe, custom search filters, interactive calendars, and structured host/guest dashboards for complete bookings management.",
+            ],
+            bullets: [
+                "Next.js App Router for optimized static generation and server-side rendering",
+                "Stripe payment gateway integration with webhooks and transactional success pipelines",
+                "Real-time guest-host messaging system featuring a customized Lexical Rich Text Editor",
+                "Dynamic event-based filters, booking calendar dates, and price calculators",
+                "Advanced client-side state management using Redux Toolkit",
+                "Comprehensive dashboards for hosts (listings, bookings, earnings analytics) and guests (booking schedule, history)",
+            ],
         },
     },
 ];

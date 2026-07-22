@@ -5,7 +5,9 @@ export async function getProjects() {
 }
 
 export async function getFeaturedProjects() {
-    return Projects.slice(0, 3);
+    const list = [...Projects];
+    list.sort((a, b) => Number(b._id) - Number(a._id));
+    return list.slice(0, 3);
 }
 
 export async function getProjectById(projectId: string) {
