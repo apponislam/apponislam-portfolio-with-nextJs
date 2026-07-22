@@ -178,7 +178,6 @@ export const projectsData: Project[] = [
         },
         warning: "Note: This project is hosted on a free tier and may take a few seconds to spin up on initial load. Sandbox payment mode is enabled.",
     },
-
     {
         _id: "6",
         type: "Professional",
@@ -193,8 +192,13 @@ export const projectsData: Project[] = [
         techStack: ["Next.js", "React", "Redux Toolkit", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Stripe", "Lexical Editor", "Socket.io", "Typescript"],
         startDate: "2025-11-10",
         endDate: "2026-02-20",
-        companyLogoImg: "/projects/letanest/home.png",
-        images: ["/projects/letanest/home.png", "/projects/letanest/details.png", "/projects/letanest/dashboard.png"],
+        companyLogoImg: "/projects/letanest/banner.png",
+        images: [
+            "/projects/letanest/banner.png",
+            "/projects/letanest/desktop_home.png",
+            "/projects/letanest/mobile_home.png",
+            "/projects/letanest/desktop_details.png"
+        ],
         descriptionDetails: {
             paragraphs: [
                 "LetANest is a full-featured premium event and festival accommodation booking platform operating in the United Kingdom. Designed to streamline short-term rentals during events like the Edinburgh Festival, it offers event-goers a smooth experience for finding, reserving, and paying for glamping setups, bell tents, and event pods.",

@@ -56,6 +56,61 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
         setIsLightboxOpen(false);
     };
 
+    const [scale, setScale] = useState(1);
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        setScale(1);
+        setPosition({ x: 0, y: 0 });
+        setIsDragging(false);
+    }, [lightboxIndex, isLightboxOpen]);
+
+    const handleWheel = (e: React.WheelEvent) => {
+        const zoomFactor = 0.15;
+        let newScale = scale;
+        if (e.deltaY < 0) {
+            newScale = Math.min(scale + zoomFactor, 4);
+        } else {
+            newScale = Math.max(scale - zoomFactor, 1);
+        }
+        setScale(newScale);
+        if (newScale === 1) {
+            setPosition({ x: 0, y: 0 });
+        }
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (scale === 1) return;
+        e.preventDefault();
+        setIsDragging(true);
+        setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || scale === 1) return;
+        e.preventDefault();
+        setPosition({
+            x: e.clientX - dragStart.x,
+            y: e.clientY - dragStart.y
+        });
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleDoubleClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (scale > 1) {
+            setScale(1);
+            setPosition({ x: 0, y: 0 });
+        } else {
+            setScale(2.5);
+        }
+    };
+
     return (
         <div className="relative my-8 group">
             {/* Main Slider Display */}
@@ -117,8 +172,31 @@ export default function ProjectImageSlider({ images, companyName }: ProjectImage
                     <div className="h-10 w-full select-none" />
 
                     {/* Lightbox Slider Display */}
-                    <div className="relative w-[95vw] h-[65vh] md:h-[75vh] rounded-lg overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200">
-                        <Image src={optimizeCloudinaryUrl(images[lightboxIndex], 1920)} alt={`${companyName} Fullscreen ${lightboxIndex + 1}`} fill className="object-contain" sizes="95vw" />
+                    <div 
+                        className="relative w-[95vw] h-[65vh] md:h-[75vh] rounded-lg overflow-hidden shadow-2xl animate-in zoom-in-95 duration-200 select-none"
+                        onClick={(e) => e.stopPropagation()}
+                        onWheel={handleWheel}
+                        onMouseDown={handleMouseDown}
+                        onMouseMove={handleMouseMove}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseUp}
+                        onDoubleClick={handleDoubleClick}
+                        style={{
+                            cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in",
+                        }}
+                    >
+                        <Image 
+                            src={optimizeCloudinaryUrl(images[lightboxIndex], 1920)} 
+                            alt={`${companyName} Fullscreen ${lightboxIndex + 1}`} 
+                            fill 
+                            className="object-contain select-none pointer-events-none" 
+                            sizes="95vw" 
+                            style={{
+                                transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                                transition: isDragging ? "none" : "transform 0.15s ease-out",
+                                transformOrigin: "center center",
+                            }}
+                        />
                     </div>
 
                     {/* Lightbox Navigation Buttons */}
