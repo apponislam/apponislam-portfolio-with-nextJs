@@ -56,7 +56,17 @@ export function PremiumFooter({ className }: React.HTMLAttributes<HTMLElement>) 
                 {/* Bottom Bar: Copyright and Credits */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-muted-foreground">
                     <p>© {currentYear} Appon Islam. All rights reserved.</p>
-                    <p>Designed & Developed by Appon Islam</p>
+                    <p>
+                        Designed & Developed by{" "}
+                        <Link 
+                            href="https://www.linkedin.com/in/apponislam/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="font-medium hover:text-foreground hover:underline transition-colors duration-200"
+                        >
+                            Appon Islam
+                        </Link>
+                    </p>
                 </div>
             </div>
         </footer>
