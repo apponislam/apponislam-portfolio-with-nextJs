@@ -23,6 +23,11 @@ export const iconMap = {
     netlify: Icons.netlify,
     socketio: Icons.socketio,
     sslcommerz: Icons.sslcommerz,
+    aws: Icons.aws,
+    vps: Icons.vps,
+    cicd: Icons.cicd,
+    ec2: Icons.ec2,
+    s3: Icons.s3,
 };
 
 export type IconName = keyof typeof iconMap;

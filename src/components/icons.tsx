@@ -3,7 +3,7 @@ import { BsInfoCircle, BsQuestionCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { FaAws, FaDownload, FaFacebook, FaHome, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { HiOutlineExternalLink, HiOutlineLink, HiBriefcase } from "react-icons/hi";
-import { AlertTriangle, ArrowRight, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code } from "lucide-react";
+import { AlertTriangle, ArrowRight, Check, ChevronLeft, ChevronRight, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, User, X, Menu, ChevronDown, BookMarked, Building, Phone, GraduationCap, Globe, Smartphone, Server, Code, Workflow, Cloud, Database } from "lucide-react";
 import { SiAngular, SiAntdesign, SiBootstrap, SiCss3, SiExpress, SiGraphql, SiHtml5, SiJavascript, SiMongodb, SiMui, SiMysql, SiNestjs, SiNetlify, SiNextdotjs, SiNodedotjs, SiReact, SiRedux, SiSocketdotio, SiTailwindcss, SiTypescript, SiGmail, SiLinkedin } from "react-icons/si";
 import { IoIosGitBranch } from "react-icons/io";
 import { TbBrandFiverr } from "react-icons/tb";
@@ -12,6 +12,11 @@ import { CiEdit } from "react-icons/ci";
 import { CgMoreVerticalAlt } from "react-icons/cg";
 
 export const Icons = {
+    cicd: Workflow,
+    ec2: Cloud,
+    s3: Database,
+    vps: Server,
+    aws: FaAws,
     sslcommerz: ({ ...props }: LucideProps) => (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
