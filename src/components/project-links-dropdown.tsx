@@ -88,13 +88,29 @@ export default function ProjectLinksDropdown({ project }: ProjectLinksDropdownPr
             ref={containerRef}
             className="relative shrink-0"
         >
+            <style>{`
+                @keyframes linksGlow {
+                    0% {
+                        box-shadow: 0 0 4px rgba(16, 185, 129, 0.2), inset 0 0 2px rgba(16, 185, 129, 0.05);
+                        border-color: rgba(16, 185, 129, 0.3);
+                    }
+                    100% {
+                        box-shadow: 0 0 16px rgba(16, 185, 129, 0.55), inset 0 0 4px rgba(16, 185, 129, 0.15);
+                        border-color: rgba(16, 185, 129, 0.75);
+                    }
+                }
+                .animate-links-glow {
+                    animation: linksGlow 1.5s infinite alternate ease-in-out;
+                }
+            `}</style>
+
             {/* Trigger Button */}
             <button
                 onClick={(e) => {
                     e.stopPropagation();
                     setIsOpen((prev) => !prev);
                 }}
-                className="flex items-center gap-1.5 border border-muted bg-background/50 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-all duration-300 shadow-xs rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer select-none"
+                className="flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-500/10 transition-all duration-300 rounded-full px-3.5 py-1.5 text-xs font-semibold cursor-pointer select-none animate-links-glow"
             >
                 <Icons.link className="h-3.5 w-3.5" />
                 <span>Links</span>
