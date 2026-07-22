@@ -17,16 +17,16 @@ export const Icons = {
     s3: Database,
     vps: Server,
     aws: FaAws,
-    sslcommerz: ({ ...props }: LucideProps) => (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    sslcommerz: ({ size, width, height, ...props }: LucideProps & { size?: number }) => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={width || size || 50} height={height || size || 50} {...props}>
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             <path d="M12 15v3" />
         </svg>
     ),
     antdesign: SiAntdesign,
-    shadcn: ({ ...props }: LucideProps) => (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" {...props}>
+    shadcn: ({ size, width, height, ...props }: LucideProps & { size?: number }) => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" width={width || size || 50} height={height || size || 50} {...props}>
             <path d="M208 128a80 80 0 1 1-160 0 80 80 0 0 1 160 0Z" stroke="currentColor" strokeWidth="16" />
             <path d="M192 40 64 216" stroke="currentColor" strokeWidth="16" strokeLinecap="round" />
         </svg>
