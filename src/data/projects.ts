@@ -192,12 +192,12 @@ export const projectsData: Project[] = [
         techStack: ["Next.js", "React", "Redux Toolkit", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Stripe", "Lexical Editor", "Socket.io", "Typescript"],
         startDate: "2025-11-10",
         endDate: "2026-02-20",
-        companyLogoImg: "/projects/letanest/banner.png",
+        companyLogoImg: "/projects/letanest/banner.webp",
         images: [
-            "/projects/letanest/banner.png",
-            "/projects/letanest/desktop_home.png",
-            "/projects/letanest/mobile_home.png",
-            "/projects/letanest/desktop_details.png"
+            "/projects/letanest/banner.webp",
+            "/projects/letanest/desktop_home.webp",
+            "/projects/letanest/mobile_home.webp",
+            "/projects/letanest/desktop_details.webp"
         ],
         descriptionDetails: {
             paragraphs: [

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import apponislam from "../../../public/appon.png";
+import apponislam from "../../../public/appon.webp";
 import { Button, buttonVariants } from "../../components/ui/button";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
@@ -31,9 +31,7 @@ export default function Home() {
                         </div>
                         <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">Appon Islam</h1>
                         <h3 className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl font-semibold">Full Stack Developer</h3>
-                        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">
-                            Passionate Full Stack Developer specialized in building responsive, modern, and high-performing web applications. Expert in React, Next.js, and the MERN stack with a focus on clean code and great user experiences.
-                        </p>
+                        <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-lg sm:leading-8 mt-2">Passionate Full Stack Developer specialized in building responsive, modern, and high-performing web applications. Expert in React, Next.js, and the MERN stack with a focus on clean code and great user experiences.</p>
 
                         <div className="grid grid-cols-2 mt-6 items-center justify-center sm:flex-row  gap-3">
                             <Link href={"https://github.com/apponislam"} target="_blank" className={cn(buttonVariants({ size: "lg" }), "px-4 md:px-8")}>
@@ -47,14 +45,13 @@ export default function Home() {
                                         variant: "outline",
                                         size: "lg",
                                     }),
-                                    "px-4 md:px-8"
+                                    "px-4 md:px-8",
                                 )}
                             >
                                 <Icons.linkedin className="w-4 h-4 mr-2" /> LinkedIn
                             </Link>
 
                             <Link
-                                // href={`${process.env.MY_SITE_URL}/apponislam-Resume.pdf`}
                                 href={`https://drive.google.com/file/d/1CGf80ZdsglQ4CoHUe-XAMBCb8Tua3y3-/view`}
                                 target="_blank"
                                 className={cn(
@@ -62,7 +59,7 @@ export default function Home() {
                                         variant: "outline",
                                         size: "lg",
                                     }),
-                                    "px-4 md:px-8"
+                                    "px-4 md:px-8",
                                 )}
                             >
                                 <Icons.download className="w-4 h-4 mr-2" /> Resume
