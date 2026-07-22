@@ -182,7 +182,7 @@ export const projectsData: Project[] = [
         _id: "6",
         type: "Professional",
         companyName: "LetANest - Short-Term Lets & Festival Stays",
-        category: ["Full Stack", "Web Dev"],
+        category: ["Professional", "Booking Platform", "Full Stack", "Web Dev"],
         shortDescription: "LetANest is a premium UK-based festival and short-term accommodation booking platform featuring glamping reservations, Stripe checkouts, and custom Lexical text editor messaging.",
         websiteLink: "https://letanest.com/",
         liveLink: "https://letanest.com/",
